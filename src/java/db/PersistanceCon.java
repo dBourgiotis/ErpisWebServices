@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -45,17 +46,24 @@ public class PersistanceCon {
         em.close();
     }
     
-    public void authUsername(){
-        
+    public boolean authUsername(String username){
+        List <AppointmentForm> list ;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
+        Query q = em.createQuery("select id from User u where u.name = :name");
+        q.setParameter("name", username);
+        list= q.getResultList();
+        
         em.getTransaction().commit();
         em.close();
+        if(list.equals(null))
+            return false;
+        return true;
     }
     
-    public void authPassword(){
+    public void authPassword(String password){
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
