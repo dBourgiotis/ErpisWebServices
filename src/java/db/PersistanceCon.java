@@ -52,7 +52,7 @@ public class PersistanceCon {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
-        Query q = em.createQuery("select id from User u where u.name = :name");
+        Query q = em.createQuery("select id from User u where u.fullName = :name");
         q.setParameter("name", username);
         list= q.getResultList();
         
@@ -63,13 +63,19 @@ public class PersistanceCon {
         return true;
     }
     
-    public void authPassword(String password){
-        
+    public String authPassword(String password){
+         List <AppointmentForm> list ;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
+        Query q = em.createQuery("select id from User u where u.password = :password");
+        q.setParameter("password", password);
+        String result = q.setFirstResult(0).toString();
         em.getTransaction().commit();
         em.close();
+        if(result.equals(null))
+            return "Not found";
+        return result;
     }
 }
