@@ -3,10 +3,32 @@
     Author     : gtsop
 */
 
+body, html {
+    height: 100%
+}
 label, input, a, p {
     font-family: verdana;
 }
-
+header {
+    height: 35px;
+    background-color: #343B75;
+}
+header label {
+    color: white;
+    position: relative;
+    top: 5px;
+    left: 10px;
+    font-size: 15px;
+}
+main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+}
+.field p {
+    background-color: #FFF7E3;
+    padding: 14px;
+}
 .field label {
     float: left;
     padding-top: 1px;
@@ -18,17 +40,17 @@ label, input, a, p {
     width: 400px;
 }
 .field {
+    white-space: normal;
     width: 550px;
-    margin: 0px auto 10px;
+    margin: 0px auto 15px;
 }
 .submit {
     cursor: pointer;
-    float: right;
-    width: 100px;
     background-color: #5FCC41;
     text-align: center;
     padding: 8px;
     color: white;
     border-radius: 3px;
-    border: 1px solid green;
+    border: 1px solid #009C00;
+    display: block;
 }
