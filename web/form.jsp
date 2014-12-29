@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/form.css">
         <title>Appointment form</title>
     </head>
     <body>
@@ -16,37 +17,37 @@
         
         <div class="field">
             <label for="amka">AMKA:</label>
-            <input id="amka" type="text" />
+            <input id="amka" type="text">
         </div>
         
         <div class="field">
             <label for="first-name">First Name:</label>
-            <input id="first-name" type="text" />
+            <input id="first-name" type="text">
         </div>
         
         <div class="field">
             <label for="last-name">Last Name:</label>
-            <input id="last-name" type="text" />
+            <input id="last-name" type="text">
         </div>
             
         <div class="field">
             <label for="insurance">Insurance:</label>
-            <input id="insurance" type="text"/>
+            <input id="insurance" type="text">
         </div>
         
         <div class="field">
             <label for="examination">Examination:</label>
-            <input id="examination" type="text"/>
-        </div>
-        
-        <div class="field">
-            <label for="emergency">Emergency Reason:</label>
-            <input id="emergency" type="text"/>
+            <input id="examination" type="text">
         </div>
         
         <div class="field">
             <label for="date">Date:</label>
-            <input id="date" type="text"/>
+            <input id="date" type="text">
+        </div>
+
+        <div class="field">
+            <label for="emergency">Emergency Reason:</label>
+            <input id="emergency" type="text">
         </div>
     </body>
 </html>
