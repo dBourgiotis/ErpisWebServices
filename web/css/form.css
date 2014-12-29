@@ -1,0 +1,17 @@
+/* 
+    Created on : Dec 29, 2014, 5:27:31 PM
+    Author     : gtsop
+*/
+
+.field label {
+    float: left;
+    width: 150px;
+}
+.field input {
+    box-sizing: border-box;
+    width: 400px;
+}
+.field {
+    width: 600px;
+    margin: 0px auto 10px;
+}
