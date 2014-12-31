@@ -46,36 +46,28 @@ public class PersistanceCon {
         em.close();
     }
     
-    public boolean authUsername(String username){
-        List <AppointmentForm> list ;
+    
+    
+    public User authCredentials(String password,String username){
+         List <User> list ;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
-        Query q = em.createQuery("select id from User u where u.fullName = :name");
+        Query q = em.createQuery("select id from User u where u.password = :password and u.fullName = :name");
+        q.setParameter("password", password);
         q.setParameter("name", username);
         list= q.getResultList();
+        em.getTransaction().commit();
+        em.close();
         
-        em.getTransaction().commit();
-        em.close();
-        if(list.equals(null))
-            return false;
-        return true;
-    }
-    
-    public String authPassword(String password){
-         List <AppointmentForm> list ;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        //todo
-        Query q = em.createQuery("select id from User u where u.password = :password");
-        q.setParameter("password", password);
-        String result = q.setFirstResult(0).toString();
-        em.getTransaction().commit();
-        em.close();
-        if(result.equals(null))
-            return "Not found";
-        return result;
+        if(list.isEmpty()){
+            return null; // an den mporoume na xeiristoume to null 8a to kanw string anti gia user 
+        } 
+        else{
+            User u = list.get(0);
+            return u;
+        }
+        
     }
 }
