@@ -5,6 +5,7 @@
  */
 package db;
 
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,23 +34,35 @@ public class PersistanceCon {
         return list;
     }
     
-    public void saveAppointments(){
+    public void saveAppointments(int amka,String fullname, Date date, String emerReason, String examination,User user ){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
+        AppointmentForm ap = new AppointmentForm();
+        ap.setAmka(amka);
+        ap.setDate(date);
+        ap.setEmergencyReason(emerReason);
+        ap.setExamination(examination);
+        ap.setFullName(fullname);
+        ap.setUser(user);
+        em.persist(ap);
         em.getTransaction().commit();
         em.close();
+        emf.close();
     }
     
-    public void changeAppointment(){
+    public void changeAppointment(AppointmentForm ap, Date date){
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
+        AppointmentForm myAp = em.getReference(AppointmentForm.class, ap.appointmentFormPK);
+        myAp.setDate(date);
         em.getTransaction().commit();
         em.close();
+        emf.close();
     }
     
     
@@ -66,6 +79,7 @@ public class PersistanceCon {
         list= q.getResultList();
         em.getTransaction().commit();
         em.close();
+        emf.close();
         
         if(list.isEmpty()){
             return null; // an den mporoume na xeiristoume to null 8a to kanw string anti gia user 
