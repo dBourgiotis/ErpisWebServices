@@ -17,14 +17,20 @@ import javax.persistence.Query;
  */
 public class PersistanceCon {
     
-    public void loadAppointments(){
+    public List <AppointmentForm> loadAppointments(){
         List <AppointmentForm> list ;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
+        Query q = em.createQuery("select * from AppointmentForm");
+        
+        list= q.getResultList();
+        
         em.getTransaction().commit();
         em.close();
+        
+        return list;
     }
     
     public void saveAppointments(){
@@ -54,7 +60,7 @@ public class PersistanceCon {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
-        Query q = em.createQuery("select id from User u where u.password = :password and u.fullName = :name");
+        Query q = em.createQuery("select * from User u where u.password = :password and u.fullName = :name");
         q.setParameter("password", password);
         q.setParameter("name", username);
         list= q.getResultList();
