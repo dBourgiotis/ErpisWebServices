@@ -4,16 +4,33 @@
     Author     : GREG
 --%>
 
+<%@page import="db.PersistanceCon"%>
+<%@page import="db.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+PersistanceCon exists = new PersistanceCon();
+
+
+
 String name = request.getParameter( "username" );
-session.setAttribute( "uname", name );
 String pswd = request.getParameter("password");
-session.setAttribute("upswd", pswd);
+
+
+
+
+/*if(exists.authCredentials(name, pswd)==null){
+    out.println("Wrong input! Please, try again.");
+    out.println("<a href='login.html'>Click here to go to login page</a>");
+}else{
+    session.setAttribute( "uname", name );
+    session.setAttribute("upswd", pswd);
+    //to do
+};*/
+
+
+
+
 %>
-<HTML>
-<BODY>
-Hello, <%= session.getAttribute( "uname" ) %>
-</BODY>
-</HTML>
+
+
