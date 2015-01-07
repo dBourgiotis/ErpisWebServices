@@ -5,6 +5,7 @@
  */
 package db;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,65 +18,76 @@ import javax.persistence.Query;
  */
 public class PersistanceCon {
     
-    public void loadAppointments(){
+    public List <AppointmentForm> loadAppointments(){
         List <AppointmentForm> list ;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
-        em.getTransaction().commit();
-        em.close();
-    }
-    
-    public void saveAppointments(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        //todo
-        em.getTransaction().commit();
-        em.close();
-    }
-    
-    public void changeAppointment(){
+        Query q = em.createQuery("select * from AppointmentForm");
         
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        //todo
-        em.getTransaction().commit();
-        em.close();
-    }
-    
-    public boolean authUsername(String username){
-        List <AppointmentForm> list ;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        //todo
-        Query q = em.createQuery("select id from User u where u.fullName = :name");
-        q.setParameter("name", username);
         list= q.getResultList();
         
         em.getTransaction().commit();
         em.close();
-        if(list.equals(null))
-            return false;
-        return true;
+        
+        return list;
     }
     
-    public String authPassword(String password){
-         List <AppointmentForm> list ;
+    public void saveAppointments(int amka,String fullname, Date date, String emerReason, String examination,User user ){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         //todo
-        Query q = em.createQuery("select id from User u where u.password = :password");
-        q.setParameter("password", password);
-        String result = q.setFirstResult(0).toString();
+        AppointmentForm ap = new AppointmentForm();
+        ap.setAmka(amka);
+        ap.setDate(date);
+        ap.setEmergencyReason(emerReason);
+        ap.setExamination(examination);
+        ap.setFullName(fullname);
+        ap.setUser(user);
+        em.persist(ap);
         em.getTransaction().commit();
         em.close();
-        if(result.equals(null))
-            return "Not found";
-        return result;
+        emf.close();
+    }
+    
+    public void changeAppointment(AppointmentForm ap, Date date){
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        //todo
+        AppointmentForm myAp = em.getReference(AppointmentForm.class, ap.appointmentFormPK);
+        myAp.setDate(date);
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+    }
+    
+    
+    
+    public User authCredentials(String password,String username){
+         List <User> list ;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myPu");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        //todo
+        Query q = em.createQuery("select * from User u where u.password = :password and u.fullName = :name");
+        q.setParameter("password", password);
+        q.setParameter("name", username);
+        list= q.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        emf.close();
+        
+        if(list.isEmpty()){
+            return null; // an den mporoume na xeiristoume to null 8a to kanw string anti gia user 
+        } 
+        else{
+            User u = list.get(0);
+            return u;
+        }
+        
     }
 }
