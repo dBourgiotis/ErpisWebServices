@@ -6,27 +6,34 @@
 
 <%@page import="db.PersistanceCon"%>
 <%@page import="db.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="helpers.ErpisUser"%>
 <%
-PersistanceCon exists = new PersistanceCon();
+ErpisUser erpisUser = new ErpisUser();
 
+if (erpisUser.isLoggedIn(request)) {
+    out.println("is logged in");
+} else {
+   String username = request.getParameter(erpisUser.AUTH_USER);
+   String password = request.getParameter(erpisUser.AUTH_PASS);
+   PersistanceCon exists = new PersistanceCon();
+   /*User user = exists.authCredentials(username, password);
+   if (user.equals(null)) {
+       out.println("Gotcah madafaka");
+   } else {*/
+       erpisUser.logIn(request);
+       out.println("yolo");
+   //}
+}
 
+//
 
-String name = request.getParameter( "username" );
-String pswd = request.getParameter("password");
-
-
-
-
-/*if(exists.authCredentials(name, pswd)==null){
+/*if(user.equals(null)){
     out.println("Wrong input! Please, try again.");
     out.println("<a href='login.html'>Click here to go to login page</a>");
-}else{
-    session.setAttribute( "uname", name );
-    session.setAttribute("upswd", pswd);
+}else{*/
+    //request.getSession().setAttribute("username", name);
     //to do
-};*/
+//};
 
 
 
