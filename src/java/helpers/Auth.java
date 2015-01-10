@@ -11,10 +11,10 @@ public class Auth {
 
     public boolean logIn (HttpServletRequest request) {
         /* TODO: Remove comment when db is fixed
-        PersistanceCon db = new PersistanceCon();
+        PersistanceCon dbCon = new PersistanceCon();
 
         // Connect to the database and check if user exists
-        User user = db.authCredentials(
+        User user = dbCon.authCredentials(
             request.getParameter(USER),
             request.getParameter(PASS)
         );

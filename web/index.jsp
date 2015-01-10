@@ -2,7 +2,7 @@
 <%  
     Auth auth = new Auth();
     if (auth.isLoggedIn(request))
-        response.sendRedirect("form.jsp");
+        response.sendRedirect("appointment.jsp");
     else
         response.sendRedirect("login.jsp");
 %>

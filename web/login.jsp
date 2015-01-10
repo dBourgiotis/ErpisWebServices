@@ -10,8 +10,10 @@
     else if (method == "POST") {
         
         Auth auth = new Auth();  
-        if (auth.logIn(request))
+        if (auth.logIn(request)) {
             response.sendRedirect("index.jsp");
-        response.sendError(401, "Unauthorized");
+        } else {
+            response.sendError(401, "Unauthorized");
+        }
     }
 %>
