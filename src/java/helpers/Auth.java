@@ -10,9 +10,9 @@ public class Auth {
     public final static String PASS = "password";
 
     public boolean logIn (HttpServletRequest request) {
-        
+
         PersistanceCon db = new PersistanceCon();
-        
+
         // Connect to the database and check if user exists
         User user = db.authCredentials(
             request.getParameter(USER),
@@ -21,7 +21,7 @@ public class Auth {
 
         if (user == null)
             return false;
-        
+
         // Save username to session so that we know
         // if a user has already logged in
         request.getSession().setAttribute(USER, request.getParameter(USER));
