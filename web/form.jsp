@@ -1,9 +1,3 @@
-<%-- 
-    Document   : form
-    Created on : Dec 29, 2014, 5:11:16 PM
-    Author     : gtsop
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
