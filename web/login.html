@@ -7,10 +7,23 @@
         <title>Erpis | Log In</title>
     </head>
     <body>
-        <form method="POST" action="login.jsp">
-            Username: <INPUT TYPE=TEXT NAME=username SIZE=20>
-            Password: <INPUT TYPE=PASSWORD NAME=password SIZE=20>
-            <input type="submit">
-        </form>
+        <header>
+            <label>Erpis</label>
+        </header>
+        <main>
+            <form method="POST" action="login.jsp">
+                <div class="field">
+                    <label for="username">Username:</label>
+                    <input id="username" name="username" type="text">
+                </div>
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input id="password" name="password" type="password">
+                </div>
+                <div class="field">
+                    <input type="submit" class="submit" value="Submit">
+                </div>
+            </form>
+        </main>
     </body>
 </html>

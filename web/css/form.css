@@ -44,7 +44,7 @@ main {
     width: 550px;
     margin: 0px auto 15px;
 }
-.submit {
+.field .submit {
     cursor: pointer;
     background-color: #5FCC41;
     text-align: center;
@@ -53,4 +53,5 @@ main {
     border-radius: 3px;
     border: 1px solid #009C00;
     display: block;
+    width: 100%;
 }
