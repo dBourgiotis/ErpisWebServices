@@ -8,11 +8,12 @@
 /* Header
 ------------------------------------------------------------------------------*/
 header {
-    background-color: #343B75;
+    background-color: rgba(52, 59, 117, 0.8);
+    box-shadow: black 0px 1px 2px;
     color: white;
     height: 3.5em;
+    position: fixed;
     width: 100%;
-    box-shadow: black 0px 1px 2px;
 }
 
 /* Logo

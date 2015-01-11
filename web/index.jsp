@@ -4,5 +4,5 @@
     if (auth.isLoggedIn(request))
         response.sendRedirect("appointment.jsp");
     else
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("index.html");
 %>
