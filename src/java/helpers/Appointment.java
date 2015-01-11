@@ -1,8 +1,8 @@
 package helpers;
 
 import javax.servlet.http.HttpServletRequest;
-import db.PersistanceCon;
-import db.User;
+import dbTest.Manager;
+import dbTest.User;
 
 public class Appointment {
     
@@ -35,7 +35,7 @@ public class Appointment {
         
         // Get first available date from database
         // TODO
-        PersistanceCon dbCon = new PersistanceCon();
+        Manager dbCon = new Manager();
         
         // Schedule appointment
         // TODO

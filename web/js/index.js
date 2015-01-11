@@ -7,7 +7,7 @@ $(function () {
             type: 'POST',
             data: {
                 username: $('#username').val(),
-                password: $('#password').val(),
+                password: $('#password').val()
             },
             error: function (jqXHR) {
                 $('#login-error')
@@ -17,6 +17,11 @@ $(function () {
             success: function (response) {
                 window.location.href = response;
             }
-        }) 
+        });
+    });
+    
+    // Hide error if user edits credentials
+    $('#username, #password').on('keypress', function () {
+        $('#login-error').slideUp(200);
     });
 });
