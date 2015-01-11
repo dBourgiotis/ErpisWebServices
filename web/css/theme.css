@@ -23,12 +23,12 @@ hearder .right {
 /* Logo
 ------------------------------------------------------------------------------*/
 #logo {
-    margin-left: 0.5em;
-    margin-top: 0.25em;
+    margin-left: 1em;
+    margin-top: 0.5em;
 }
 #logo label {
-    bottom: 0.7em;
-    font-size: 1.5em;
+    bottom: 0.6em;
+    font-size: 1.3em;
     left: 0.2em;
     position: relative;
     text-shadow: 1px 1px #444;
@@ -37,10 +37,10 @@ hearder .right {
 /* Icons
 ------------------------------------------------------------------------------*/
 .icon {
-    background-size: 3em 3em;
+    background-size: 2.5em;
     display: inline-block;
-    height: 3em;
-    width: 3em;
+    height: 2.5em;
+    width: 2.5em;
 }
 .icon.heart {
     background-image: url('/erpis/images/heart.png');

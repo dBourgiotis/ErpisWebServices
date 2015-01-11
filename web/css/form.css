@@ -1,6 +1,5 @@
 /* Generic form css
 ------------------------------------------------------------------------------*/
-
 .form {
     padding: 1em;
 }
@@ -27,4 +26,13 @@
 }
 .form input[type="button"]:hover {
     background-color: #399639;
+}
+
+.form input[type="button"].disabled {
+    background-color: grey;
+    cursor: default;
+}
+
+.form input[type="button"].disabled:hover {
+    background-color: grey;
 }
