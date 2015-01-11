@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-<HTML>
-<BODY>
-<FORM METHOD=POST ACTION="testli.jsp">
-    Username: <INPUT TYPE=TEXT NAME=username SIZE=20><BR>
-    Password: <INPUT TYPE=PASSWORD NAME=password SIZE=20>
-<P><INPUT TYPE=SUBMIT>
-</FORM>
-</BODY>
-</HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/form.css">
+        <link rel="stylesheet" type="text/css" href="css/normalise.css">
+        <title>Erpis | Welcome</title>
+    </head>
+    <body>
+        <header class="bg-highlight">
+            <div id="logo" class="left">
+                <span class="icon heart"></span>
+                <label>Erpis</label>
+            </div>
+        </header>
+        <main>
+            <section class="content">
+                <div class="overlay">
+                    <div class="row moto">
+                        <p>Spreading erpis worldwide</p>
+                        <div class="sub-moto">
+                            <p>and saving lives for that matter...</p>
+                        </div>
+                    </div>
+                    <div class="row login bg-highlight">
+                        <form method="POST" action="login.jsp">
+                            <input name="username" type="text" placeholder="User name">
+                            <input name="password" type="password" placeholder="Password">
+                            <input type="submit" class="submit" value="Sign in">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

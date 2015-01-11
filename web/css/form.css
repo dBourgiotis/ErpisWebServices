@@ -1,56 +1,24 @@
-/* 
-    Created on : Dec 29, 2014, 5:27:31 PM
-    Author     : gtsop
-*/
+/* Generic form css
+------------------------------------------------------------------------------*/
 
-body, html {
-    height: 100%
+form {
+    padding: 1em;
 }
-label, input, a, p {
-    font-family: verdana;
-}
-header {
-    height: 35px;
-    background-color: #343B75;
-}
-header label {
-    color: white;
-    position: relative;
-    top: 5px;
-    left: 10px;
-    font-size: 15px;
-}
-main {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-bottom: 100px;
-}
-.field p {
-    background-color: #FFF7E3;
-    padding: 14px;
-}
-.field label {
-    float: left;
-    padding-top: 1px;
-    width: 150px;
-}
-.field input {
+
+form input {
     box-sizing: border-box;
-    font-size: 14px;
-    width: 400px;
+    width: 100%;
 }
-.field {
-    white-space: normal;
-    width: 550px;
-    margin: 0px auto 15px;
+
+form input[type="text"],
+form input[type="password"] {
+    border: 1px solid #DDD;
+    background-color: #EFEFEF;
+    margin-bottom: 1.5em;
+    padding: 0.7em 1em;
 }
-.submit {
-    cursor: pointer;
-    background-color: #5FCC41;
-    text-align: center;
-    padding: 8px;
+
+form input[type="submit"] {
+    background-color: darkgreen;
     color: white;
-    border-radius: 3px;
-    border: 1px solid #009C00;
-    display: block;
 }

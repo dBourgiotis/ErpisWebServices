@@ -7,49 +7,45 @@
         <title>Erpis | Appointment form</title>
     </head>
     <body>
-        
         <header>
             <label>Erpis</label>
         </header>
-        
         <main>
-            <div class="form">
-
+            <form method="POST" class="form" action="appointment.jsp">
                 <div class="field">
                     <p>Fill in all of the following fields and then click
                         "Submit" to schedule an appointment</p>
                 </div>
-
                 <div class="field">
                     <label for="amka">AMKA:</label>
-                    <input id="amka" type="number" min="10000000000" max="99999999999"
-                        placeholder="e.g: 12345678909">
+                    <input id="amka" name="amka" type="number"
+                            min="10000000000" max="99999999999"
+                            placeholder="e.g: 12345678909">
                 </div>
-
                 <div class="field">
                     <label for="first-name">First Name:</label>
-                    <input id="first-name" type="text" placeholder="e.g: George">
+                    <input id="first-name" name="first-name" type="text"
+                           placeholder="e.g: George">
                 </div>
-
                 <div class="field">
                     <label for="last-name">Last Name:</label>
-                    <input id="last-name" type="text" placeholder="e.g: Papadopoulos">
+                    <input id="last-name" name="last-name" type="text"
+                           placeholder="e.g: Papadopoulos">
                 </div>
-
                 <div class="field">
                     <label for="insurance">Insurance:</label>
-                    <input id="insurance" type="text" placeholder="e.g: Erpis Insurance Co">
+                    <input id="insurance" name="insurance" type="text"
+                           placeholder="e.g: Erpis Insurance Co">
                 </div>
-
                 <div class="field">
                     <label for="examination">Examination:</label>
-                    <input id="examination" type="text" placeholder="e.g: Colonoscopy">
+                    <input id="examination" name="examination" type="text"
+                           placeholder="e.g: Colonoscopy">
                 </div>
-
                 <div class="field">
-                    <a class="submit">Submit</a>
+                    <input type="submit" value="Submit" class="submit" >
                 </div>
-            </div>
+            </form>
         </main>
     </body>
 </html>
