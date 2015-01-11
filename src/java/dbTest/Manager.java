@@ -6,6 +6,7 @@
 package dbTest;
 
 import java.sql.Connection;
+import java.sql.Date;
 
 import java.sql.PreparedStatement;
 
@@ -18,6 +19,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author it21221
@@ -69,5 +72,87 @@ public class Manager {
 
         }    
         
-    
+        public void saveAppointment(Appointment ap){
+            try {
+
+                PreparedStatement ps = connection.prepareStatement("Insert into Appointment (amka,FullName,EmergencyReason,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?,?)");
+                
+                ps.setInt(1, ap.getAmka());
+                ps.setString(2, ap.getFullName());
+                ps.setString(3, ap.getEmergencyReason());
+                ps.setDate(4, (Date) ap.getDate());//upopto
+                ps.setString(5, ap.getInsuranceName());
+                ps.setString(6, ap.getExamination());
+                ps.setInt(7, ap.getUserId());
+                ps.executeUpdate();
+                System.out.println("appointment added!");
+                
+                connection.close();
+               
+
+            } catch (Exception ex) {
+
+                System.out.println("Error in check() -->" + ex.getMessage());
+
+            }
+                       
+         
+        }
+        
+        public void changeAppointment(Appointment ap){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
+                ps.setDate(1, (Date) ap.getDate());//upopto
+                ps.setString(2, ap.getEmergencyReason());
+                ps.setInt(3,ap.getId());
+                ps.executeUpdate();
+                System.out.println("appointment added!");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+        }
+        
+        public List<Appointment>loadAppointments(){
+            List<Appointment> apList = new ArrayList<Appointment>();
+            try {
+
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select * from AppointmentForm");
+
+                while (rs.next()) {
+
+                    Appointment ap = new Appointment();
+
+                    ap.setAmka(rs.getInt("amka")); 
+
+                    ap.setDate(rs.getDate("Date"));
+                    
+                    ap.setEmergencyReason(rs.getString("EmergencyReason"));
+                    
+                    ap.setExamination(rs.getString("Examination"));
+                    
+                    ap.setFullName(rs.getString("FullName"));
+                    
+                    ap.setId(rs.getInt("id"));
+                    
+                    ap.setUserId(rs.getInt("user_id"));
+                    
+                    ap.setInsuranceName(rs.getString("InsuranceName"));
+                    
+                    apList.add(ap);
+
+                }
+                System.out.println("Aplist created");
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+            return apList;
+        }
 }
