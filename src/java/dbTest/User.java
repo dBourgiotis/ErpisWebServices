@@ -10,7 +10,7 @@ package dbTest;
  * @author it21221
  */
 
-import java.text.ParseException;
+
 
 import java.text.SimpleDateFormat;
 
@@ -30,6 +30,10 @@ public class User {
         private String role;
 
         private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
         /**
 
