@@ -103,10 +103,10 @@ public class Manager {
             try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
                 ps.setDate(1, (Date) ap.getDate());//upopto
-                ps.setString(2, ap.getEmergencyReason());
+                ps.setString(2, "none");
                 ps.setInt(3,ap.getId());
                 ps.executeUpdate();
-                System.out.println("appointment added!");
+                System.out.println("appointment changed!");
                 connection.close();
 
             } catch (SQLException ex) {
