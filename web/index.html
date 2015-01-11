@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/form.css">
         <link rel="stylesheet" type="text/css" href="css/normalise.css">
+        <script src="js/lib/jquery-1.11.2.min.js"></script>
+        <script src="js/index.js"></script>
         <title>Erpis | Welcome</title>
     </head>
     <body>
@@ -25,11 +27,12 @@
                         </div>
                     </div>
                     <div class="row login bg-highlight">
-                        <form method="POST" action="login.jsp">
-                            <input name="username" type="text" placeholder="User name">
-                            <input name="password" type="password" placeholder="Password">
-                            <input type="submit" class="submit" value="Sign in">
-                        </form>
+                        <div class="form">
+                            <input id="username" name="username" type="text" placeholder="User name">
+                            <input id="password" name="password" type="password" placeholder="Password">
+                            <div id="login-error"></div>
+                            <input id="submit" name="submit" type="button" value="Sign in">
+                        </div>
                     </div>
                 </div>
             </section>

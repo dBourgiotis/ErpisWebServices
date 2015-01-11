@@ -9,11 +9,13 @@
     // Check credentials
     else if (method == "POST") {
         
-        Auth auth = new Auth();  
+        Auth auth = new Auth();
         if (auth.logIn(request)) {
-            response.sendRedirect("index.jsp");
+            response.setStatus(200);
+            response.getWriter().write("appointment.jsp");
         } else {
-            response.sendError(401, "Unauthorized");
+            response.setStatus(401);
+            response.getWriter().write("Invalid credentials");
         }
     }
 %>
