@@ -147,6 +147,7 @@ public class Manager {
 
                 }
                 System.out.println("Aplist created");
+                connection.close();
 
             } catch (SQLException e) {
 
@@ -155,4 +156,40 @@ public class Manager {
             }
             return apList;
         }
+        
+        public User getUser(String pas){
+            User user = new User();
+
+            try {
+
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from User where Password =? ");
+
+                preparedStatement.setString(1, pas);
+
+                ResultSet rs = preparedStatement.executeQuery();
+
+ 
+
+                if (rs.next()) {
+
+                    user.setUname(rs.getString("FullName"));
+                    user.setId(rs.getInt("id"));
+                    user.setRole(rs.getString("Role"));
+                    user.setPassword(pas);
+
+                }
+                System.out.println("User returned");
+                connection.close();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+
+ 
+            
+            return user;
+        }
+        
 }
