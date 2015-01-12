@@ -1,0 +1,16 @@
+.content {
+    top: 3.5em;
+    bottom:0;
+}
+header {
+    position: absolute;
+}
+
+.appointments {
+    background-color: blue;
+    height: 100%;
+    width: auto;
+    display: block;
+    margin-left: 17em;
+    background-color: #888FC9;
+}
