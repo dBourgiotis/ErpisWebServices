@@ -1,0 +1,33 @@
+/* Generic form css
+------------------------------------------------------------------------------*/
+.form {
+    padding: 1em;
+}
+.form input {
+    box-sizing: border-box;
+    width: 100%;
+}
+.form input[type="text"],
+.form input[type="password"] {
+    border: 1px solid #DDD;
+    background-color: #EFEFEF;
+    margin-bottom: 1.5em;
+    padding: 0.7em 1em;
+}
+.form input[type="button"] {
+    transition: .5s;
+    background-color: #207D20;
+    color: #FFF;
+    border: medium none;
+    padding: 9px;
+}
+.form input[type="button"]:hover {
+    background-color: #399639;
+}
+.form input[type="button"].disabled {
+    background-color: grey;
+    cursor: default;
+}
+.form input[type="button"].disabled:hover {
+    background-color: grey;
+}

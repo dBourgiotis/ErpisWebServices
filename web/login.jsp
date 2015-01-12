@@ -1,21 +1,13 @@
-<%@page import="helpers.Auth"%>
+<%@page import="helpers.ResponseHandler"%>
 <%    
-    String method = request.getMethod();
+    ResponseHandler rHandler = new ResponseHandler(
+        response,
+        request,
+        application
+    );
     
-    // Redirect to login page
-    if (method == "GET")
-        response.sendRedirect("login.html");
-    
-    // Check credentials
-    else if (method == "POST") {
-        
-        Auth auth = new Auth();
-        if (auth.logIn(request)) {
-            response.setStatus(200);
-            response.getWriter().write("appointment.jsp");
-        } else {
-            response.setStatus(401);
-            response.getWriter().write("Invalid credentials");
-        }
-    }
+    if (rHandler.logIn())
+        rHandler.redirect("appointment.jsp");
+    else
+        rHandler.reply("Invalid credentials", 401);
 %>
