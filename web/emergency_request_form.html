@@ -50,7 +50,14 @@ and open the template in the editor.
                     <p>Fill in all of the following fields and then click
                         "Submit" to rearrange an appointment</p>
                 </div>
-
+                
+                <div class="field">
+                    <label for="amka">AMKA:</label>
+                    <input id="amka" name="amka" type="number"
+                            min="10000000000" max="99999999999"
+                            placeholder="e.g: 12345678909">
+                </div>
+                
                 <div class="field">
                     <label for="new-date">New Date:</label>
                     <input id="new-date" name="new_date" type="text" class="datepicker" 
