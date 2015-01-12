@@ -235,7 +235,7 @@ public class Manager {
          public void addEmergency(int id, String reason, Date eDate){
              
              try {
-                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , energencyReason = ? where id = ?;  ");
+                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , EmergencyReason = ? where id = ?;  ");
                 ps.setDate(1, eDate);
                 ps.setString(2, reason);
                 ps.setInt(3,id);
