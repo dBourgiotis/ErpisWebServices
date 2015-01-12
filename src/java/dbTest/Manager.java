@@ -192,4 +192,41 @@ public class Manager {
             return user;
         }
         
+        
+         public boolean citizenConfig(Citizen ci) {
+
+            try {
+
+                PreparedStatement ps = connection.prepareStatement("select id from Citizen where FullName = ? and amka = ?");
+
+                ps.setString(1, ci.getFullName());
+                ps.setInt(2, ci.getAmka());
+
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) // found
+
+                {
+                   connection.close();
+                   System.out.println("Found");
+                   return true;
+
+                } else {
+                   connection.close();
+                   System.out.println("Not Found"); 
+                   return false ; 
+
+                }
+
+            } catch (Exception ex) {
+
+                System.out.println("Error in check() -->" + ex.getMessage());
+
+            }
+           
+             System.out.println("Error 456735425");
+            return false;
+
+        }    
+        
 }
