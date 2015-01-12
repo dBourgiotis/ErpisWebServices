@@ -31,6 +31,17 @@ public class Appointment {
      private String examination;
      
      private Date date;
+     
+     private Date emergencyDate;
+
+    public Date getEmergencyDate() {
+        return emergencyDate;
+    }
+
+    public void setEmergencyDate(Date emergencyDate) {
+        this.emergencyDate = emergencyDate;
+    }
+              
 
     public String getFullName() {
         return fullName;
