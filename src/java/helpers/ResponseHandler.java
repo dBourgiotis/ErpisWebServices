@@ -52,9 +52,9 @@ public class ResponseHandler {
         }
     }
 
-    private void _redirect (String filePath) {
+    private void _redirect (String url) {
         try {
-            this.response.sendRedirect(filePath);
+            this.response.sendRedirect(url);
         } catch (IOException e) {
             this._internalServerError();
         }
@@ -99,12 +99,20 @@ public class ResponseHandler {
     //
     
     
-    public void redirect (String filePath) {
-        this._redirect(filePath);
+    public void redirect (String url) {
+        this._redirect(url);
+    }
+    
+    public void error () {
+        this.error("Bad request");
     }
     
     public void error (String text) {
         this._reply(text, 400);
+    }
+    
+    public void success () {
+        this.success("OK");
     }
     
     public void success (String text) {

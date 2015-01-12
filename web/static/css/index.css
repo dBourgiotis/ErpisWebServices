@@ -3,14 +3,9 @@
 .content {
     background-image: url('/erpis/static/images/stethoscope-large.jpg');
     background-size: 100% 100%;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    top:0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
-    z-index: -1;
 }
 .content .moto {
     transition: .5s;

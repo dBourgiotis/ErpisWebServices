@@ -7,7 +7,7 @@
     );
     
     if (rHandler.isLoggedIn())
-        rHandler.render("appointment.html");
+        rHandler.render("home.html");
     else
         rHandler.render("index.html");
 %>

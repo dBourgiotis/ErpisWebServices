@@ -1,30 +1,33 @@
-<%@page import="helpers.Auth"%>
 <%@page import="helpers.Appointment"%>
-<%    
-    String method = request.getMethod();
+<%@page import="helpers.ResponseHandler"%>
+<%
+    ResponseHandler rHandler = new ResponseHandler(
+        response,
+        request,
+        application
+    );
     
-    // Redirect to appointment page
-    if (method == "GET")
-        response.sendRedirect("appointment.html");
-    
-    // Schedule appointment
-    else if (method == "POST") {
+    if (!rHandler.isLoggedIn()) {
+        rHandler.redirect("index.jsp");
         
-        Auth auth = new Auth();
+    } else {
         
-        // Unauthorized
-        if (!auth.isLoggedIn(request)) {
-            response.sendRedirect("login.jsp");
+        String method = request.getMethod();
+
+        if (method == "GET") {
             
-        } else {
+            // Render appointment page
+            rHandler.render("appointment.html");
+            
+        } else if (method == "POST") {
+            
+            // Schedule appointment
             Appointment appointment = new Appointment();
             if (appointment.scheduleAppointment(request)) {
-                response.setStatus(200);
-                out.println("OK");
+                rHandler.success();
             } else {
-                response.setStatus(400);
-                out.println("Invalid parameters");
+                rHandler.error();
             }
-        }   
+        }
     }
 %>

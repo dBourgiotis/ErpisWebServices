@@ -7,7 +7,7 @@
     );
     
     if (rHandler.logIn())
-        rHandler.redirect("appointment.jsp");
+        rHandler.success();
     else
         rHandler.reply("Invalid credentials", 401);
 %>

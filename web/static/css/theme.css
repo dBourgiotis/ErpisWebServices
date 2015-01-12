@@ -4,6 +4,14 @@
     font-size: 100%;
     font-family: verdana;
 }
+.content {
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top:0;
+    z-index: -1;
+}
 
 /* Header
 ------------------------------------------------------------------------------*/

@@ -16,8 +16,8 @@ $(function () {
                     .text(jqXHR.responseText)
                     .slideDown(200);
             },
-            success: function (response) {
-                window.location.href = response;
+            success: function () {
+                window.location.reload();
             },
             complete: function () {
                 $('#submit').removeClass('disabled')
@@ -30,7 +30,7 @@ $(function () {
     // Handle "Enter" key
     $('#username, #password').on('keypress', function (e) {
         $('#login-error').slideUp(200);
-        if (e.keyCode == 13)
+        if (e.keyCode === 13)
             $('#submit').click();
     });
 });
