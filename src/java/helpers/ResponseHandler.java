@@ -137,4 +137,10 @@ public class ResponseHandler {
         Auth auth = new Auth();
         return auth.logIn(this.request);
     }
+    
+    public boolean logOut () {
+        Auth auth = new Auth();
+        auth.logOut(this.request);
+        return true;
+    }
 }
