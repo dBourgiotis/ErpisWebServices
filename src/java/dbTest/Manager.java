@@ -102,7 +102,7 @@ public class Manager {
         public void changeAppointment(Appointment ap){
             try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
-                ps.setDate(1, (Date) ap.getDate());//upopto
+                ps.setDate(1, (Date) ap.getEmergencyDate());//upopto
                 ps.setString(2, "none");
                 ps.setInt(3,ap.getId());
                 ps.executeUpdate();
@@ -142,6 +142,8 @@ public class Manager {
                     ap.setUserId(rs.getInt("user_id"));
                     
                     ap.setInsuranceName(rs.getString("InsuranceName"));
+                     
+                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
                     
                     apList.add(ap);
 
@@ -227,6 +229,72 @@ public class Manager {
              System.out.println("Error 456735425");
             return false;
 
-        }    
+        }  
+         
+         
+         public void addEmergency(int id, String reason, Date eDate){
+             
+             try {
+                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , energencyReason = ? where id = ?;  ");
+                ps.setDate(1, eDate);
+                ps.setString(2, reason);
+                ps.setInt(3,id);
+                ps.executeUpdate();
+                System.out.println("Emergency reason & date created");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+        
+             
+         }
+         
+         public Appointment returnAp(int id){
+             Appointment ap = new Appointment();
+             
+             try {
+
+                PreparedStatement ps = connection.prepareStatement("select * from AppointmentForm where id = ? ");
+                                
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                
+                if(rs.next()) {
+                    
+
+                    ap.setAmka(rs.getInt("amka")); 
+
+                    ap.setDate(rs.getDate("Date"));
+                    
+                    ap.setEmergencyReason(rs.getString("EmergencyReason"));
+                    
+                    ap.setExamination(rs.getString("Examination"));
+                    
+                    ap.setFullName(rs.getString("FullName"));
+                    
+                    ap.setId(rs.getInt("id"));
+                    
+                    ap.setUserId(rs.getInt("user_id"));
+                    
+                    ap.setInsuranceName(rs.getString("InsuranceName"));
+                     
+                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
+                 
+                 
+
+                }
+                System.out.println("Ap returned");
+                connection.close();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+             
+             return ap;
+         }
         
 }
