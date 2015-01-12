@@ -1,3 +1,4 @@
+<%@page import="dbTest.Manager"%>
 <%@page import="helpers.Auth"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -8,11 +9,9 @@
 <!DOCTYPE html>
 <%
     
-    String str_amka = request.getParameter( "amka" );
-    int amka = Integer.parseInt(str_amka);
-        out.print(amka);
     
- /*
+    
+ 
 String method = request.getMethod();
     
 // Redirect to appointment page
@@ -29,13 +28,24 @@ else if (method == "POST") {
         response.sendRedirect("login.jsp");
             
     } else {   
-        String str_amka = request.getParameter( "amka" );
+        
+        String str_ap_ad = request.getParameter( "a_ad" );
+        int ap_id;
         String dt1 = request.getParameter( "new_date" );
         String dt2 = request.getParameter("new_time");
         String rsn = request.getParameter("reason"); 
-        int amka = Integer.parseInt(str_amka);
-        out.print(amka);
+        
     
+    
+    
+        try{
+            ap_id = Integer.parseInt(str_ap_ad);
+        } catch (NumberFormatException e){
+            out.println("Wrong input! Please, try again.");
+            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
+        }
+   
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         dateFormat.setLenient(false);
         try {     
@@ -56,36 +66,17 @@ else if (method == "POST") {
         
         
         //insert data into database
+        Manager m = new Manager();
+        /*h tha prepei h addEmergency na dexetai ena String (enwmena ta dt1 kai dt2) h tha prepei na
+        dexetai 2 Date (hmeromhnia kai wra)
+        */
+        //m.addEmergency(ap_id, rsn, Date eDate)
+        
+        
+       
     }
 }
-    /*
-    String dt1 = request.getParameter( "new_date" );
-        String dt2 = request.getParameter("new_time");
-        String rsn = request.getParameter("reason"); 
     
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        dateFormat.setLenient(false);
-        try {     
-            dateFormat.parse(dt1.trim());
-        } catch (ParseException pe) {
-            out.println("Wrong input! Please, try again.");
-            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
-        }
-    
-        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm");
-        dateFormat2.setLenient(false);
-        try {
-            dateFormat2.parse(dt2.trim());
-        }catch (ParseException pe) {
-            out.println("Wrong input! Please, try again.");
-            out.println("<a href='emergency_request_form.html'>Click here to go to back</a>");
-        }
-        
-        
-        //insert data into database
-    
-    
-    */
     
     
     
