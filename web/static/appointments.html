@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="static/css/theme.css">
         <link rel="stylesheet" type="text/css" href="static/css/appointments.css">
         <script src="static/js/lib/jquery-1.11.2.min.js"></script>
+        <script src="static/js/common.js"></script>
         <script src="static/js/appointments.js"></script>
         <title>Erpis | Appointments</title>
     </head>
@@ -32,7 +33,7 @@
                 <div class="close">X</div>
                 <div class="form bg-highlight">
                     <input id="amka" name="amka" type="number"
-                            min="10000000000" max="99999999999"
+                            min="0" max="99999999999"
                             placeholder="AMKA">
                     <input id="first-name" name="first-name" type="text"
                            placeholder="First Name">
@@ -42,7 +43,8 @@
                            placeholder="Insurance Name">
                     <input id="examination" name="examination" type="text"
                            placeholder="Examination">
-                    <input type="button" value="Submit" >
+                    <div class="error"></div>
+                    <input id="submit" type="button" value="Submit" >
                 </div>
             </div>
         </div>

@@ -34,6 +34,18 @@ public class Appointment {
      
      private Date emergencyDate;
 
+    public Appointment () {
+    
+    }
+    
+    public Appointment(String fullName, String insuranceName, int userId, int amka, String examination) {
+        this.fullName = fullName;
+        this.insuranceName = insuranceName;
+        this.userId = userId;
+        this.amka = amka;
+        this.examination = examination;
+    }
+
     public Date getEmergencyDate() {
         return emergencyDate;
     }
