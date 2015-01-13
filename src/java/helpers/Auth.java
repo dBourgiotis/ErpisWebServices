@@ -2,6 +2,7 @@ package helpers;
 
 import javax.servlet.http.HttpServletRequest;
 import dbTest.Manager;
+import dbTest.User;
 
 public class Auth {
    
@@ -23,7 +24,12 @@ public class Auth {
 
         // Save username to session so that we know
         // if a user has already logged in
+        
+        manager = new Manager();
+        User user = manager.getUser(request.getParameter(PASS));
         request.getSession().setAttribute(USER, request.getParameter(USER));
+        request.getSession().setAttribute("role", user.getRole());
+        request.getSession().setAttribute("id", user.getId());
         
         return true;
     }
