@@ -33,14 +33,15 @@
             <div class="overlay"></div>
             <div class="popup">
                 <div class="close">X</div>
-                <div class="form bg-highlight">
-                    <input id="amka" name="appointment_id" type="text"
+                
+                <form class="form bg-highlight" action="emergency_request_form.jsp" method="POST">
+                    <input id="ap_id" name="appointment_id" type="text"
                             placeholder="Appointment ID">
                     <input id="date" name="date" type="text" class="datepicker" 
                            placeholder="Date">
                     <input id="reason"  name="reason" type="text" placeholder="Reason">
-                    <input type="button" value="Submit">
-                </div>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
     </body>
