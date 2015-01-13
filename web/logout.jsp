@@ -6,8 +6,8 @@
         application
     );
     
-    if (rHandler.logIn())
+    if (rHandler.logOut())
         rHandler.redirect("index.jsp");
     else
-        rHandler.reply("Invalid credentials", 401);
+        rHandler.error();
 %>

@@ -1,8 +1,7 @@
 package helpers;
 
 import javax.servlet.http.HttpServletRequest;
-import db.PersistanceCon;
-import db.User;
+import dbTest.Manager;
 
 public class Auth {
    
@@ -10,18 +9,18 @@ public class Auth {
     public final static String PASS = "password";
 
     public boolean logIn (HttpServletRequest request) {
-        /* TODO: Remove comment when db is fixed
-        PersistanceCon dbCon = new PersistanceCon();
+
+        Manager manager = new Manager();
 
         // Connect to the database and check if user exists
-        User user = dbCon.authCredentials(
+        Boolean exists = manager.checkUser(
             request.getParameter(USER),
             request.getParameter(PASS)
         );
 
-        if (user == null)
+        if (!exists)
             return false;
-        */
+
         // Save username to session so that we know
         // if a user has already logged in
         request.getSession().setAttribute(USER, request.getParameter(USER));

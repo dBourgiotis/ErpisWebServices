@@ -1,8 +1,13 @@
-<%@page import="helpers.Auth"%>
+<%@page import="helpers.ResponseHandler"%>
 <%  
-    Auth auth = new Auth();
-    if (auth.isLoggedIn(request))
-        response.sendRedirect("appointment.jsp");
+    ResponseHandler rHandler = new ResponseHandler(
+        response,
+        request,
+        application
+    );
+    
+    if (rHandler.isLoggedIn())
+        rHandler.redirect("appointments.jsp");
     else
-        response.sendRedirect("index.html");
+        rHandler.render("index.html");
 %>
