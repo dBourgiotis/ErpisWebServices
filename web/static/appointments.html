@@ -25,7 +25,12 @@
                 </ul>
             </div>
             <div class="dump">
-                <form class="form bg-highlight" method="POST" action="appointment.jsp">
+                <button class="create">New Appointment</button>
+            </div>
+            <div class="overlay"></div>
+            <div class="popup">
+                <div class="close">X</div>
+                <div class="form bg-highlight">
                     <input id="amka" name="amka" type="number"
                             min="10000000000" max="99999999999"
                             placeholder="AMKA">
@@ -38,7 +43,7 @@
                     <input id="examination" name="examination" type="text"
                            placeholder="Examination">
                     <input type="button" value="Submit" >
-                </form>
+                </div>
             </div>
         </div>
     </body>

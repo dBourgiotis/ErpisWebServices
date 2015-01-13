@@ -28,12 +28,19 @@ body {
     z-index: -1;
 }
 .dump {
-    height: 100%;
-    width: auto;
-    display: block;
-    margin-left: 13em;
     background-color: #EAF1FF;
+    display: block;
+    height: 100%;
+    margin-left: 13em;
+    overflow: scroll;
+    width: auto;
 }
+a {
+    text-decoration: none;
+    outline: none;
+    color: white;
+}
+
 
 
 /* Header
@@ -152,8 +159,27 @@ header {
     background-color: grey;
 }
 
-a {
-    text-decoration: none;
-    outline: none;
-    color: white;
+/* Popup
+------------------------------------------------------------------------------*/
+.popup {
+    margin: 0px auto;
+    top: 12%;
+    position: absolute;
+    display: block;
+}
+.popup .form {
+    max-width: 500px;
+    margin: 0px auto;
+}
+.popup .close {
+    float: right;
+    bottom: .6em;
+    padding: 0.2em 0.5em;
+    border-radius: 100%;
+    position: relative;
+    left: .6em;
+    color: #FFF;
+    border: 2px solid #FFF;
+    background-color: rgba(52, 59, 86, 0.8);
+    cursor: pointer;
 }
