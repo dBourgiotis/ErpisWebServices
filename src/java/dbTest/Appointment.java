@@ -34,6 +34,18 @@ public class Appointment {
      private Timestamp date;
      
      private Timestamp emergencyDate;
+     
+     private String MedicalOffice;
+
+    public String getMedicalOffice() {
+        return MedicalOffice;
+    }
+
+    public void setMedicalOffice(String MedicalOffice) {
+        this.MedicalOffice = MedicalOffice;
+    }
+     
+     
 
     public Timestamp getEmergencyDate() {
         return emergencyDate;
