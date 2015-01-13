@@ -1,4 +1,4 @@
-/* Content
+/* Index Page CSS
 ------------------------------------------------------------------------------*/
 .content {
     background-image: url('/erpis/static/images/stethoscope-large.jpg');
@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-position: right;
 }
-.content .moto {
+.moto {
     transition: .5s;
     color: #ededed;
     text-align: center;
@@ -15,40 +15,22 @@
     position: relative;
     max-width: 8em;
 }
-.content .moto p {
-    margin-bottom: 0.5em;
-}
-
 .sub-moto {
-    font-size: 0.3em;
-    max-width: 100%;
+    font-size: 0.35em;
+    margin-top: 1em;
 }
-
 @media only screen and (max-width: 500px) {
-    
-    .content .moto {
-        font-size: 2em;
-        max-width: 8em;
-    }
-
-    .content .sub-moto {
-        font-size: 0.4em;
-        max-width: 800%;
-    }
-    
-    .row {
-        margin-top: 4em;
+    .moto {
+        font-size: 2.5em;
     }
 }
-
 .login {
     width: 320px;
 }
-
-#login-error {
+.login-error {
     display: none;
-    text-align: center;
-    margin-top: -1em;
-    margin-bottom: .5em;
     color: #FF3030;
+    margin-bottom: .5em;
+    margin-top: -1em;
+    text-align: center;
 }

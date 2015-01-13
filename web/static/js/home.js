@@ -1,5 +1,5 @@
 $(function () {
-    $('#logout a').click(function () {
+    $('#logout').click(function () {
         $.ajax({
             url: 'logout.jsp',
             type: 'POST',
