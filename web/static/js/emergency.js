@@ -8,7 +8,10 @@ $(function () {
         hidePopup();
     });
     
-    $(".datepicker").datepicker();
+    $(".datepicker").datetimepicker({
+        //nextText: ">",
+        //prevText: "<"
+    });;
 });
 
 
