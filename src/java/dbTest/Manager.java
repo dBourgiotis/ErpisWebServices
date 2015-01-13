@@ -246,6 +246,25 @@ public class Manager {
              
          }
          
+         public boolean existAp(int id){
+             
+            try {
+                PreparedStatement ps = connection.prepareStatement("select * from AppointmentForm where id = ? ");
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                
+                if(rs.next()){
+                    return true;
+                }else{
+                    return false;
+                }
+            } catch (SQLException ex) {
+                 System.out.println("Error in check() -->" + ex.getMessage());
+            }
+                                
+            return false;   
+        }
+         
          public Appointment returnAp(int id){
              Appointment ap = new Appointment();
              
