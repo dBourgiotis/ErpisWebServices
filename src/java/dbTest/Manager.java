@@ -76,7 +76,7 @@ public class Manager {
         public void saveAppointment(Appointment ap){
             try {
 
-                PreparedStatement ps = connection.prepareStatement("Insert into Appointment (amka,FullName,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?)");
+                PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?)");
                 
                 ps.setInt(1, ap.getAmka());
                 ps.setString(2, ap.getFullName());
@@ -298,7 +298,22 @@ public class Manager {
              return ap;
          }
     
-        public void generateDatePlace(String examination){
+        public List <String> generatePlaces(){
+            List <String> places = new ArrayList<String>();
+            try {
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select Name from MedicalOffice");
+
+                while (rs.next()) {
+                    places.add(rs.getString("Name"));
+                }
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
             
+            return places;
         } 
 }
