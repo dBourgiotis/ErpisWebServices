@@ -14,6 +14,10 @@
     
     User myUser= new User();
     
+    myUser.setPassword(password);
+    myUser.setRole(role);
+    myUser.setUname(fname);
+    
     Manager myManager = new Manager();
     
     myManager.createUser(myUser);
