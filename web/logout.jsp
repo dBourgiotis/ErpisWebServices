@@ -7,7 +7,7 @@
     );
     
     if (rHandler.logOut())
-        rHandler.success();
+        rHandler.redirect("index.jsp");
     else
         rHandler.error();
 %>
