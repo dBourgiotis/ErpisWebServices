@@ -319,4 +319,47 @@ public class Manager {
             
             return places;
         } 
+        
+        public void createUser(User u){
+        
+            try {
+                PreparedStatement ps = connection.prepareStatement("Insert into User (Role,FullName,Password) Values (?,?,?)");
+                ps.setString(1,u.getRole());
+                ps.setString(2, u.getUname());
+                ps.setString(3,u.getPassword() );
+                ps.executeUpdate();
+                connection.close();
+                System.out.println("User Created");
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
+        
+        public void changeUsersRole(int id, String newRole){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Update User set Role = ? where id = ?;  ");
+                ps.setString(1,newRole);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                System.out.println("User changed!");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+        
+        }
+        
+        public void deleteUser(int id){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Delete from User  where id = ?;  ");
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                System.out.println("User deleted!");
+                connection.close();
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
 }
