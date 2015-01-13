@@ -158,6 +158,16 @@ header {
 .form input[type="button"].disabled:hover {
     background-color: grey;
 }
+.error {
+    display: block;
+}
+.form .error {
+    display: none;
+    color: #FF3030;
+    margin-bottom: .5em;
+    margin-top: -1em;
+    text-align: center;
+}
 
 /* Popup
 ------------------------------------------------------------------------------*/

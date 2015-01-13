@@ -11,7 +11,7 @@ $(function () {
             return;
         }
         
-        disableSignIn();
+        disableButton('#sign-in');
         
         $.ajax({
             url: 'login.jsp',
@@ -27,7 +27,7 @@ $(function () {
                 refresh();
             },
             complete: function () {
-                enableSignIn();
+                enableButton('#sign-in');
             }
         });
     });
@@ -42,21 +42,3 @@ $(function () {
         hideError();
     });
 });
-
-function disableSignIn () {
-    $('#sign-in').addClass('disabled')
-       .attr('disabled', 'disabled');
-}
-function enableSignIn () {
-    $('#sign-in').removeClass('disabled')
-        .attr('disabled', null);
-}
-function showError (error) {
-    $('#login-error').text(error).slideDown(200);
-}
-function hideError () {
-    $('#login-error').slideUp(200);
-}
-function refresh() {
-    window.location.reload();
-}

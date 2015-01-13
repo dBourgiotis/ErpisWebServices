@@ -27,7 +27,7 @@
             if (aForm.scheduleAppointment(request)) {
                 rHandler.success();
             } else {
-                rHandler.error();
+                rHandler.error(aForm.getError());
             }
         }
     }

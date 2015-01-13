@@ -1,5 +1,9 @@
 $(function () {
    
+    $('.form input').on('keypress', function () {
+        hideError();
+    });
+    
     $('.create').click(function () {
        showPopup();
     });
@@ -19,24 +23,15 @@ $(function () {
                insurance: $('#insurance').val(),
                examination: $('#examination').val()
             },
+            success: function () {
+                hidePopup();
+            },
+            error: function (jqXHR) {
+                showError(jqXHR.responseText);
+            },
             complete: function (jqXHR) {
-                window.j = jqXHR;
-                console.log('yolo');
+                
             }
         });
     });
 });
-
-
-function showPopup () {
-    $('.overlay').fadeIn(100);
-    $('.popup').css('left',
-        ($(window).width() / 2) -
-        ($('.popup').width() / 2)
-    ).fadeIn(100);
-}
-
-function hidePopup () {
-       $('.overlay').fadeOut(100);
-       $('.popup').fadeOut(100);
-}
