@@ -76,7 +76,7 @@ public class Manager {
         public void saveAppointment(Appointment ap){
             try {
 
-                PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,EmergencyReason,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?,?)");
+                PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,Date,InsuranceName,Examination,user_id,MedicalOffice) Values (?,?,?,?,?,?,?)");
                 
                 ps.setInt(1, ap.getAmka());
                 ps.setString(2, ap.getFullName());
@@ -129,24 +129,15 @@ public class Manager {
 
                     Appointment ap = new Appointment();
 
-                    ap.setAmka(rs.getInt("amka")); 
-
-                    ap.setDate(rs.getTimestamp("Date"));
-                    
-                    ap.setEmergencyReason(rs.getString("EmergencyReason"));
-                    
-                    ap.setExamination(rs.getString("Examination"));
-                    
-                    ap.setFullName(rs.getString("FullName"));
-                    
                     ap.setId(rs.getInt("id"));
-                    
-                    ap.setUserId(rs.getInt("user_id"));
-                    
+                    ap.setAmka(rs.getInt("amka")); 
+                    ap.setFullName(rs.getString("FullName"));
+                    ap.setEmergencyReason(rs.getString("EmergencyReason"));
+                    ap.setDate(rs.getTimestamp("Date"));
                     ap.setInsuranceName(rs.getString("InsuranceName"));
-                     
+                    ap.setExamination(rs.getString("Examination"));
+                    ap.setUserId(rs.getInt("user_id"));
                     ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
-                    
                     ap.setMedicalOffice(rs.getString("MedicalOffice"));
                     
                     apList.add(ap);
