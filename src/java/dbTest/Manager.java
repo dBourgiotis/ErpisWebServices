@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 import java.util.ArrayList;
 
@@ -75,15 +76,17 @@ public class Manager {
         public void saveAppointment(Appointment ap){
             try {
 
+                PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,Date,InsuranceName,Examination,user_id,MedicalOffice) Values (?,?,?,?,?,?,?)");
                 PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,EmergencyReason,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?,?)");
                 
                 ps.setInt(1, ap.getAmka());
                 ps.setString(2, ap.getFullName());
-                ps.setString(3, ap.getEmergencyReason());
-                ps.setDate(4, (Date) ap.getDate());//upopto
-                ps.setString(5, ap.getInsuranceName());
-                ps.setString(6, ap.getExamination());
-                ps.setInt(7, ap.getUserId());
+                //ps.setString(3, ap.getEmergencyReason());
+                ps.setTimestamp(3, ap.getDate());// (4, (Date) ap.getDate());//upopto
+                ps.setString(4, ap.getInsuranceName());
+                ps.setString(5, ap.getExamination());
+                ps.setInt(6, ap.getUserId());
+                ps.setString(7,ap.getMedicalOffice());
                 ps.executeUpdate();
                 System.out.println("appointment added!");
                 
@@ -102,7 +105,7 @@ public class Manager {
         public void changeAppointment(Appointment ap){
             try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
-                ps.setDate(1, (Date) ap.getEmergencyDate());//upopto
+                ps.setTimestamp(1, ap.getEmergencyDate());//upopto
                 ps.setString(2, "none");
                 ps.setInt(3,ap.getId());
                 ps.executeUpdate();
@@ -129,7 +132,7 @@ public class Manager {
 
                     ap.setAmka(rs.getInt("amka")); 
 
-                    ap.setDate(rs.getDate("Date"));
+                    ap.setDate(rs.getTimestamp("Date"));
                     
                     ap.setEmergencyReason(rs.getString("EmergencyReason"));
                     
@@ -143,7 +146,9 @@ public class Manager {
                     
                     ap.setInsuranceName(rs.getString("InsuranceName"));
                      
-                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
+                    ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
+                    
+                    ap.setMedicalOffice(rs.getString("MedicalOffice"));
                     
                     apList.add(ap);
 
@@ -232,11 +237,11 @@ public class Manager {
         }  
          
          
-         public void addEmergency(int id, String reason, Date eDate){
+         public void addEmergency(int id, String reason, Timestamp eDate){
              
              try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , EmergencyReason = ? where id = ?;  ");
-                ps.setDate(1, eDate);
+                ps.setTimestamp(1, eDate);
                 ps.setString(2, reason);
                 ps.setInt(3,id);
                 ps.executeUpdate();
@@ -266,7 +271,7 @@ public class Manager {
 
                     ap.setAmka(rs.getInt("amka")); 
 
-                    ap.setDate(rs.getDate("Date"));
+                    ap.setDate(rs.getTimestamp("Date"));
                     
                     ap.setEmergencyReason(rs.getString("EmergencyReason"));
                     
@@ -280,9 +285,9 @@ public class Manager {
                     
                     ap.setInsuranceName(rs.getString("InsuranceName"));
                      
-                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
+                    ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
                  
-                 
+                    ap.setMedicalOffice(rs.getString("MedicalOffice"));
 
                 }
                 System.out.println("Ap returned");
@@ -296,5 +301,66 @@ public class Manager {
              
              return ap;
          }
+    
+        public List <String> generatePlaces(){
+            List <String> places = new ArrayList<String>();
+            try {
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select Name from MedicalOffice");
+
+                while (rs.next()) {
+                    places.add(rs.getString("Name"));
+                }
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+            return places;
+        } 
         
+        public void createUser(User u){
+        
+            try {
+                PreparedStatement ps = connection.prepareStatement("Insert into User (Role,FullName,Password) Values (?,?,?)");
+                ps.setString(1,u.getRole());
+                ps.setString(2, u.getUname());
+                ps.setString(3,u.getPassword() );
+                ps.executeUpdate();
+                connection.close();
+                System.out.println("User Created");
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
+        
+        public void changeUsersRole(int id, String newRole){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Update User set Role = ? where id = ?;  ");
+                ps.setString(1,newRole);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                System.out.println("User changed!");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+        
+        }
+        
+        public void deleteUser(int id){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Delete from User  where id = ?;  ");
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                System.out.println("User deleted!");
+                connection.close();
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
 }
