@@ -14,27 +14,22 @@
     Manager m = new Manager();
     List <Appointment> ls = m.loadAppointments();
     String rxml = new String();
-    int i=1;
-    rxml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     
     rxml+="<appointments>";
-    while(ls.isEmpty()==false){
-        
+    for (int i = 0; i < ls.size(); ++i){
         rxml+="<appointment>";
-       
-	rxml+="<fullname>"+ls.get(i).getFullName()+"</fullname>";
-	rxml+="<insurance_name>"+ls.get(i).getInsuranceName()+"</insurance_name>";
-	rxml+="<id>"+ls.get(i).getId()+"</id>";
-	rxml+="<userid>"+ls.get(i).getUserId()+"</userid>";
-	rxml+="<amka>"+ls.get(i).getAmka()+"</amka>";
-	rxml+="<emergency_reason>"+ls.get(i).getEmergencyReason()+"</emergency_reason>";
-	rxml+="<examination>"+ls.get(i).getExamination()+"</examination>";
-	rxml+="<date>"+ls.get(i).getDate()+"</date>";
-	rxml+="<emergency_date>"+ls.get(i).getEmergencyDate()+"</emergency_date>";
-	 
+        rxml+="<fullname>"+ls.get(i).getFullName()+"</fullname>";
+        rxml+="<insurance_name>"+ls.get(i).getInsuranceName()+"</insurance_name>";
+        rxml+="<id>"+ls.get(i).getId()+"</id>";
+        rxml+="<userid>"+ls.get(i).getUserId()+"</userid>";
+        rxml+="<amka>"+ls.get(i).getAmka()+"</amka>";
+        rxml+="<emergency_reason>"+ls.get(i).getEmergencyReason()+"</emergency_reason>";
+        rxml+="<examination>"+ls.get(i).getExamination()+"</examination>";
+        rxml+="<date>"+ls.get(i).getDate()+"</date>";
+        rxml+="<emergency_date>"+ls.get(i).getEmergencyDate()+"</emergency_date>";
+        rxml+="<medical_office>"+ls.get(i).getMedicalOffice()+"</medical_office>";
         rxml+="</appointment>";
-        i++;
-  
+ 
     }
     rxml+="</appointments>";
     
