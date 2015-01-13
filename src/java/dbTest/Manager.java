@@ -76,7 +76,6 @@ public class Manager {
         public void saveAppointment(Appointment ap){
             try {
 
-                PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,Date,InsuranceName,Examination,user_id,MedicalOffice) Values (?,?,?,?,?,?,?)");
                 PreparedStatement ps = connection.prepareStatement("Insert into AppointmentForm (amka,FullName,EmergencyReason,Date,InsuranceName,Examination,user_id) Values (?,?,?,?,?,?,?)");
                 
                 ps.setInt(1, ap.getAmka());

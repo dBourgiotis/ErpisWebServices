@@ -36,6 +36,14 @@ public class Appointment {
      private Timestamp emergencyDate;
      
      private String MedicalOffice;
+public Appointment () {}
+    public Appointment(String fullName, String insuranceName, int userId, int amka, String examination) {
+        this.fullName = fullName;
+        this.insuranceName = insuranceName;
+        this.userId = userId;
+        this.amka = amka;
+        this.examination = examination;
+    }
 
     public String getMedicalOffice() {
         return MedicalOffice;

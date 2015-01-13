@@ -15,7 +15,6 @@
     List <Appointment> ls = m.loadAppointments();
     String rxml = new String();
     int i=1;
-    rxml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     
     rxml+="<appointments>";
     while(ls.isEmpty()==false){
