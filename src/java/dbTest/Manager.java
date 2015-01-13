@@ -372,4 +372,22 @@ public class Manager {
                 System.out.println("Error in check() -->" + ex.getMessage());
             }
         }
+        
+        public int findId(){
+            int id=-1;
+             try {
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select max(Id) from MedicalOffice");
+
+                while (rs.next()) {
+                    id=rs.getInt("max(Id)");
+                }
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            return id;
+        }
 }
