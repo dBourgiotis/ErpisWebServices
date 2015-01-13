@@ -1,4 +1,6 @@
 
+<%@page import="dbTest.Appointment"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="helpers.Auth"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -59,11 +61,13 @@ else if (method == "POST") {
         
         //insert data into database
         Manager m = new Manager();
-        /*h tha prepei h addEmergency na dexetai ena String (enwmena ta dt1 kai dt2) h tha prepei na
-        dexetai 2 Date (hmeromhnia kai wra)
-        */
-       // m.addEmergency(ap_id, rsn, dt.getTime());
         
+        /*if(m.existAp(ap_id)){
+            m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
+        }else{
+            out.println("Appointment doesn't exist! Please, try again.");
+            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
+        }*/
         
        
     }
