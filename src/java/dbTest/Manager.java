@@ -297,5 +297,8 @@ public class Manager {
              
              return ap;
          }
-        
+    
+        public void generateDatePlace(String examination){
+            
+        } 
 }
