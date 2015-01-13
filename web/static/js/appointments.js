@@ -11,14 +11,14 @@ $(function () {
 
 
 function showPopup () {
-    $('.overlay').fadeIn(150);
+    $('.overlay').fadeIn(100);
     $('.popup').css('left',
         ($(window).width() / 2) -
         ($('.popup').width() / 2)
-    ).fadeIn(150);
+    ).fadeIn(100);
 }
 
 function hidePopup () {
-       $('.overlay').fadeOut(150);
-       $('.popup').fadeOut(150);
+       $('.overlay').fadeOut(100);
+       $('.popup').fadeOut(100);
 }

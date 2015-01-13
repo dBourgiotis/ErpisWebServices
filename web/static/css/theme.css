@@ -165,7 +165,7 @@ header {
     margin: 0px auto;
     top: 12%;
     position: absolute;
-    display: block;
+    display: none;
 }
 .popup .form {
     max-width: 500px;
