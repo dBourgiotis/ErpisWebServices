@@ -19,6 +19,12 @@ public class Citizen {
 
         private int amka;
 
+    public Citizen (String firstName, String lastName, String insuranceName, int amka) {
+        setFullName(firstName + " " + lastName);
+        setInsuranceName(insuranceName);
+        setAmka(amka);
+    }
+    
     public String getFullName() {
         return fullName;
     }

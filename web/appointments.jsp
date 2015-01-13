@@ -1,4 +1,4 @@
-<%@page import="helpers.Appointment"%>
+<%@page import="helpers.AppointmentForm"%>
 <%@page import="helpers.ResponseHandler"%>
 <%
     ResponseHandler rHandler = new ResponseHandler(
@@ -22,8 +22,9 @@
         } else if (method == "POST") {
             
             // Schedule appointment
-            Appointment appointment = new Appointment();
-            if (appointment.scheduleAppointment(request)) {
+            AppointmentForm aForm = new AppointmentForm();
+            request.setAttribute("userid", request.getSession().getAttribute("id"));
+            if (aForm.scheduleAppointment(request)) {
                 rHandler.success();
             } else {
                 rHandler.error();
