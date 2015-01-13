@@ -14,6 +14,9 @@
     background-color: rgba(52, 59, 117, 0.8);
     box-shadow: black 0px 1px 2px;
 }
+body {
+    background-color: #8B8B8B;
+}
 .row {
     margin: 2em auto 0 auto;
 }
@@ -24,6 +27,14 @@
     width: 100%;
     z-index: -1;
 }
+.dump {
+    height: 100%;
+    width: auto;
+    display: block;
+    margin-left: 13em;
+    background-color: #EAF1FF;
+}
+
 
 /* Header
 ------------------------------------------------------------------------------*/
@@ -41,9 +52,9 @@ header {
     bottom: 0;
     overflow: hidden;
     position: absolute;
-    top:0;
     width: 100%;
     z-index: -1;
+    top: 3.5em;
 }
 
 /* Logo
@@ -116,6 +127,7 @@ header {
     width: 100%;
 }
 .form input[type="text"],
+.form input[type="number"],
 .form input[type="password"] {
     border: 1px solid #DDD;
     background-color: #EFEFEF;
@@ -138,4 +150,10 @@ header {
 }
 .form input[type="button"].disabled:hover {
     background-color: grey;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: white;
 }
