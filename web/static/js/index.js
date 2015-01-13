@@ -1,36 +1,62 @@
 $(function () {
-    
-    // Handle login 
-    $('#submit').click(function () {
-        $('#submit').addClass('disabled')
-            .attr('disabled', 'disabled');
+     
+    // Make login request
+    $('#sign-in').click(function () {
+        
+        var username = $('#username').val();
+        var password = $('#password').val();
+        
+        if (!username || !password) {
+            showError("Fill in username and password");
+            return;
+        }
+        
+        disableSignIn();
+        
         $.ajax({
             url: 'login.jsp',
             type: 'POST',
             data: {
-                username: $('#username').val(),
-                password: $('#password').val()
+                username: username,
+                password: password
             },
             error: function (jqXHR) {
-                $('#login-error')
-                    .text(jqXHR.responseText)
-                    .slideDown(200);
+                showError(jqXHR.responseText);
             },
             success: function () {
-                window.location.reload();
+                refresh();
             },
             complete: function () {
-                $('#submit').removeClass('disabled')
-                    .attr('disabled', null);
+                enableSignIn();
             }
         });
     });
     
-    // Hide error if user edits credentials
-    // Handle "Enter" key
     $('#username, #password').on('keypress', function (e) {
-        $('#login-error').slideUp(200);
+        
+        // Handle "Enter" key
         if (e.keyCode === 13)
-            $('#submit').click();
+            $('#sign-in').click();
+        
+        // Hide error if user edits credentials
+        hideError();
     });
 });
+
+function disableSignIn () {
+    $('#sign-in').addClass('disabled')
+       .attr('disabled', 'disabled');
+}
+function enableSignIn () {
+    $('#sign-in').removeClass('disabled')
+        .attr('disabled', null);
+}
+function showError (error) {
+    $('#login-error').text(error).slideDown(200);
+}
+function hideError () {
+    $('#login-error').slideUp(200);
+}
+function refresh() {
+    window.location.reload();
+}

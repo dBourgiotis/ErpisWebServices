@@ -7,7 +7,7 @@
     );
     
     if (rHandler.isLoggedIn())
-        rHandler.render("home.html");
+        rHandler.redirect("appointments.jsp");
     else
         rHandler.render("index.html");
 %>
