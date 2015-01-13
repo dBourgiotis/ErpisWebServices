@@ -5,6 +5,7 @@
  */
 package dbTest;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
@@ -30,15 +31,15 @@ public class Appointment {
      
      private String examination;
      
-     private Date date;
+     private Timestamp date;
      
-     private Date emergencyDate;
+     private Timestamp emergencyDate;
 
-    public Date getEmergencyDate() {
+    public Timestamp getEmergencyDate() {
         return emergencyDate;
     }
 
-    public void setEmergencyDate(Date emergencyDate) {
+    public void setEmergencyDate(Timestamp emergencyDate) {
         this.emergencyDate = emergencyDate;
     }
               
@@ -99,11 +100,11 @@ public class Appointment {
         this.examination = examination;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
      

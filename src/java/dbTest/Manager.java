@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,7 @@ public class Manager {
                 ps.setInt(1, ap.getAmka());
                 ps.setString(2, ap.getFullName());
                 ps.setString(3, ap.getEmergencyReason());
-                ps.setDate(4, (Date) ap.getDate());//upopto
+                ps.setTimestamp(4, ap.getDate());// (4, (Date) ap.getDate());//upopto
                 ps.setString(5, ap.getInsuranceName());
                 ps.setString(6, ap.getExamination());
                 ps.setInt(7, ap.getUserId());
@@ -102,7 +103,7 @@ public class Manager {
         public void changeAppointment(Appointment ap){
             try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
-                ps.setDate(1, (Date) ap.getEmergencyDate());//upopto
+                ps.setTimestamp(1, ap.getEmergencyDate());//upopto
                 ps.setString(2, "none");
                 ps.setInt(3,ap.getId());
                 ps.executeUpdate();
@@ -129,7 +130,7 @@ public class Manager {
 
                     ap.setAmka(rs.getInt("amka")); 
 
-                    ap.setDate(rs.getDate("Date"));
+                    ap.setDate(rs.getTimestamp("Date"));
                     
                     ap.setEmergencyReason(rs.getString("EmergencyReason"));
                     
@@ -143,7 +144,7 @@ public class Manager {
                     
                     ap.setInsuranceName(rs.getString("InsuranceName"));
                      
-                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
+                    ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
                     
                     apList.add(ap);
 
@@ -232,11 +233,11 @@ public class Manager {
         }  
          
          
-         public void addEmergency(int id, String reason, Date eDate){
+         public void addEmergency(int id, String reason, Timestamp eDate){
              
              try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , EmergencyReason = ? where id = ?;  ");
-                ps.setDate(1, eDate);
+                ps.setTimestamp(1, eDate);
                 ps.setString(2, reason);
                 ps.setInt(3,id);
                 ps.executeUpdate();
@@ -266,7 +267,7 @@ public class Manager {
 
                     ap.setAmka(rs.getInt("amka")); 
 
-                    ap.setDate(rs.getDate("Date"));
+                    ap.setDate(rs.getTimestamp("Date"));
                     
                     ap.setEmergencyReason(rs.getString("EmergencyReason"));
                     
@@ -280,7 +281,7 @@ public class Manager {
                     
                     ap.setInsuranceName(rs.getString("InsuranceName"));
                      
-                    ap.setEmergencyDate(rs.getDate("EmergencyDate"));
+                    ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
                  
                  
 
