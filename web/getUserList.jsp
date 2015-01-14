@@ -1,8 +1,7 @@
-
-
 <%@page import="dbTest.Appointment"%>
 <%@page import="java.util.List"%>
 <%@page import="dbTest.Manager"%>
+<%@page import="dbTest.User"%>
 <%@page contentType="text/xml" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
