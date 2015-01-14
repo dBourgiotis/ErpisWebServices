@@ -22,10 +22,6 @@
     }
     rxml+="</users>";
     
-    out.println(rxml);
-    
-    
-    
-    
+    out.println(rxml);    
     
 %>

@@ -23,6 +23,25 @@ function showPopup () {
     ).fadeIn(100);
 }
 function hidePopup () {
-       $('.overlay').fadeOut(100);
-       $('.popup').fadeOut(100);
+    $('.overlay').fadeOut(100);
+    $('.popup').fadeOut(100);
+}
+function objectToTable (object) {
+    return '<table><tbody>' +
+        Object.keys(object).map(function (key) {
+            if (key === 'id' || key === 'userId')
+                return false;
+            var value = object[key];
+            if (value === null || value === undefined)
+                return false;
+            if (key == 'Date') {
+                value = $.datepicker.formatDate('yy/mm/dd', new Date(parseInt(value)));
+                //value = value.toISOString().slice(0,10).replace(/-/g,"");
+            }
+            return '<tr>' +
+                '<td>' + key + '</td>' +
+                '<td>' + value + '</td>' +
+            '</tr>';
+        }).toString().replace(/false/g, '').replace(/,/g, '') +
+    '</tbody></table>';
 }
