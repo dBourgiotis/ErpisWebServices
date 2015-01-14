@@ -17,7 +17,7 @@
     );
     
     if (rHandler.isLoggedIn()){
-        int id = Integer.parseInt(request.getParameter("Id"));     
+        int id = Integer.parseInt(request.getParameter("id"));     
 
         Manager myManager = new Manager();
 

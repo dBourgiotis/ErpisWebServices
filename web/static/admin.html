@@ -39,7 +39,7 @@ and open the template in the editor.
                 <ul></ul>
             </div>
             <div class="overlay"></div>
-            <div class="popup">
+            <div id="new-user" class="popup">
                 <div class="close">X</div>
                 <div class="form bg-highlight">
                     <input id="first-name" name="first-name" type="text"
@@ -54,7 +54,20 @@ and open the template in the editor.
                         <option value="Admin">Administrator</option>
                    </select> 
                     <div class="error"></div>
-                    <input id="submit" type="button" value="Submit" >
+                    <input class="submit" type="button" value="Submit" >
+                </div>
+            </div>
+            <div id="edit-user" class="popup">
+                <div class="close">X</div>
+                <div class="form bg-highlight">
+                    <input disabled="disabled" id="ap-id" type="text" value="">
+                    <select id="new-role">
+                        <option value="Secretary">Secretary</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Admin">Administrator</option>
+                   </select> 
+                    <div class="error"></div>
+                    <input class="submit" type="button" value="Submit" >
                 </div>
             </div>
         </div>

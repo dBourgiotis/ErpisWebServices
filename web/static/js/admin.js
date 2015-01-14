@@ -1,12 +1,11 @@
 $(function () {
-   
     
     $('.create').click(function () {
-       showPopup();
+       showPopup('#new-user');
     });
     
     
-    $('#submit').click(function () {
+    $('#new-user .submit').click(function () {
         $.ajax({
             url: 'admin.jsp',
             type: 'POST',
@@ -21,6 +20,20 @@ $(function () {
             error: function (jqXHR) {
                 showError(jqXHR.responseText);
             },
+        });
+    });
+    
+    $('#edit-user .submit').click(function () {
+        $.ajax({
+           url: 'editUser.jsp',
+           type: 'POST',
+           data: {
+               id: $('#ap-id').val(),
+               role: $('#new-role').val()
+           },
+           success: function () {
+               refresh();
+           }
         });
     });
     
@@ -47,7 +60,9 @@ function createUser (u) {
         '<li id="' + u.id +'" class="bg-highlight"><div class="toggle">' +
             '<span class="id">' + u['id'] + '</span>' +
             '<span class="name">' + u['Full Name'] + '</span>' +
-            '<span class="role">' + u['Role'] + '</span></div>' +
+            '<span class="role">' + u['Role'] + '</span>' +
+            '<span class="supervisor"><button class="accept">Edit</button><button class="reject">Delete</button></span>'  +
+            '</div>' +
             '<div class="details">' +
                 objectToTable(u) +
             '</div>' +
@@ -55,6 +70,24 @@ function createUser (u) {
     );
     $('#' + u.id + ' .toggle').click(function () {
         $('#' + u.id + ' .details').toggle(200);
+    });
+    $('#' + u.id + ' .reject').click(function () {
+        $.ajax({
+           url: 'deleteUser.jsp',
+           type: 'POST',
+           data: {
+               id: u.id,
+           },
+           success: function () {
+               refresh();
+           }
+        });
+        return false;
+    });
+    $('#' + u.id + ' .accept').click(function () {
+        $('#ap-id').val(u.id).hide();
+        showPopup('#edit-user');
+        return false;
     });
 }
 
