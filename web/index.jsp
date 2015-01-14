@@ -6,8 +6,15 @@
         application
     );
     
-    if (rHandler.isLoggedIn())
-        rHandler.redirect("appointments.jsp");
-    else
+    if (rHandler.isLoggedIn()) {
+        if (rHandler.isAdmin())
+            rHandler.redirect("admin.jsp");
+        //else if(rHandler.isSupervisor())
+        //  rHandler.redirect("supervisor.jsp):
+        else
+            rHandler.redirect("appointments.jsp");
+    }
+    else {
         rHandler.render("index.html");
+    }
 %>
