@@ -34,9 +34,14 @@ function objectToTable (object) {
             var value = object[key];
             if (value === null || value === undefined)
                 return false;
-            if (key == 'Date') {
-                value = $.datepicker.formatDate('yy/mm/dd', new Date(parseInt(value)));
-                //value = value.toISOString().slice(0,10).replace(/-/g,"");
+            if (value === "null" || value === "undefined" || value === "0")
+                return false;
+            if (key == 'Appointment Date' || key == 'Emergency Date') {
+                var date = new Date(parseInt(value));
+                var hour = date.getHours();
+                if (hour < 10) hour = "0" + hour;
+                value = $.datepicker.formatDate('yy/mm/dd', date) +
+                    ' ' + hour + ':00';
             }
             return '<tr>' +
                 '<td>' + key + '</td>' +

@@ -81,7 +81,7 @@ function xmlToAppointment (xml) {
         'AMKA': getEl('amka')[0].innderHTML,
         'Emergency Reason': getEl('emergency_reason')[0].innerHTML,
         'Examination': getEl('examination')[0].innerHTML,
-        'Date': getEl('date')[0].innerHTML,
+        'Appointment Date': getEl('date')[0].innerHTML,
         'Emergency Date': getEl('emergency_date')[0].innerHTML,
         'Medical Office': getEl('medical_office')[0].innderHTML
     }
