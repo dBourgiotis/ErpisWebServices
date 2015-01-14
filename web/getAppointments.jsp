@@ -36,7 +36,4 @@
     out.println(rxml);
     
     
-    
-    
-    
 %>
