@@ -15,16 +15,19 @@ function hideError () {
 function refresh() {
     window.location.reload();
 }
-function showPopup () {
-    $('.overlay').fadeIn(100);
-    $('.popup').css('left',
+function showPopup (selector) {
+    hideError();
+    if (selector === undefined)
+        selector = '';
+    $('.overlay').fadeIn(150);
+    $(selector + '.popup').css('left',
         ($(window).width() / 2) -
         ($('.popup').width() / 2)
-    ).fadeIn(100);
+    ).fadeIn(150);
 }
 function hidePopup () {
-    $('.overlay').fadeOut(100);
-    $('.popup').fadeOut(100);
+    $('.overlay').fadeOut(150);
+    $('.popup').fadeOut(150);
 }
 function objectToTable (object) {
     return '<table><tbody>' +
@@ -50,3 +53,58 @@ function objectToTable (object) {
         }).toString().replace(/false/g, '').replace(/,/g, '') +
     '</tbody></table>';
 }
+
+function createAppointment (a) {
+    
+    var menu = '<div class="create">'+
+        'Schedule' +
+    '</div>';
+    var isScheduled = a['Appointment Date'];
+    
+    $('.dump ul').append(
+        '<li id="' + a.id +'" class="bg-highlight"><div class="toggle">' +
+            '<span class="id">' + a['id'] + '</span>' +
+            '<span class="name">' + a['Full Name'] + '</span>' +
+            '<span class="insurance">' + a['Insurance'] + '</span>' +
+            (isScheduled ? '' : '<span class="not-scheduled">not schecduled!</span>') +
+            '</div>' +
+            '<div class="details">' +
+                objectToTable(a) +
+                (isScheduled? '' : menu) +
+            '</div>' +
+        '</li>'
+    );
+    $('#' + a.id + ' .toggle').click(function () {
+        $('#' + a.id + ' .details').toggle(200);
+    });
+    $('#' + a.id + ' .create').click(function () {
+        showPopup('#schedule');
+        $('#schedule #ap_id').val(a.id).hide();
+    });
+}
+
+function xmlToAppointment (xml) {
+    var getEl = function (tagname) {
+        return xml.getElementsByTagName(tagname);
+    }
+    return {
+        'Full Name': getEl('fullname')[0].innerHTML,
+        'Examination': getEl('examination')[0].innerHTML,
+        'Medical Office': getEl('medical_office')[0].innderHTML,
+        //'Appointment Date': getEl('date')[0].innerHTML,
+        'Emergency Reason': getEl('emergency_reason')[0].innerHTML,
+        'Insurance': getEl('insurance_name')[0].innerHTML,
+        'AMKA': getEl('amka')[0].innderHTML,
+        'id': getEl('id')[0].innerHTML,
+        'userId': getEl('userid')[0].innerHTML,
+    }
+}
+
+$(function () {
+    // Close popups
+    $('.overlay, .popup .close').click(function () {
+        hidePopup();
+    });
+    // Render datepickers
+    $(".datepicker").datetimepicker();
+});

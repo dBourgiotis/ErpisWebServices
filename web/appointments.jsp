@@ -29,6 +29,16 @@
             } else {
                 rHandler.error(aForm.getError());
             }
+        } else if (method == "PUT") {
+            
+            // Schedule appointment
+            AppointmentForm aForm = new AppointmentForm();
+            request.setAttribute("userid", request.getSession().getAttribute("id"));
+            if (aForm.scheduleAppointment(request)) {
+                rHandler.success();
+            } else {
+                rHandler.error(aForm.getError());
+            }
         }
     }
 %>

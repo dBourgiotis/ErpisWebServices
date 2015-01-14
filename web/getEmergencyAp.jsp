@@ -25,9 +25,9 @@
     
     String rxml = new String();
     
-    rxml+="<emergency appointments>";
+    rxml+="<emergencies>";
     for (int i = 0; i < ls2.size(); ++i){
-        rxml+="<emergency appointment>";
+        rxml+="<emergency>";
         rxml+="<fullname>"+ls2.get(i).getFullName()+"</fullname>";
         rxml+="<insurance_name>"+ls2.get(i).getInsuranceName()+"</insurance_name>";
         rxml+="<id>"+ls2.get(i).getId()+"</id>";
@@ -35,13 +35,13 @@
         rxml+="<amka>"+ls2.get(i).getAmka()+"</amka>";
         rxml+="<emergency_reason>"+ls2.get(i).getEmergencyReason()+"</emergency_reason>";
         rxml+="<examination>"+ls2.get(i).getExamination()+"</examination>";
-        rxml+="<date>"+ls2.get(i).getDate()+"</date>";
-        rxml+="<emergency_date>"+ls2.get(i).getEmergencyDate()+"</emergency_date>";
+        rxml+="<date>"+ls2.get(i).getDate().getTime()+"</date>";
+        rxml+="<emergency_date>"+ls2.get(i).getEmergencyDateTimestamp()+"</emergency_date>";
         rxml+="<medical_office>"+ls2.get(i).getMedicalOffice()+"</medical_office>";
-        rxml+="</emergency appointment>";
+        rxml+="</emergency>";
  
     }
-    rxml+="</emergency appointments>";
+    rxml+="</emergencies>";
     
     out.println(rxml);
     

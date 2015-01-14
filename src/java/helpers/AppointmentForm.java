@@ -4,15 +4,20 @@ import javax.servlet.http.HttpServletRequest;
 import dbTest.Manager;
 import dbTest.Appointment;
 import dbTest.Citizen;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AppointmentForm {
     
+    public final static String AP_ID = "ap_id";
     public final static String AMKA = "amka";
     public final static String FIRST_NAME = "first_name";
     public final static String LAST_NAME = "last_name";
     public final static String INSURANCE = "insurance";
     public final static String EXAMINATION = "examination";
-    
+    public final static String DATE = "date";
+    public final static String OFFICE = "office";
     
     private String error="";
     
@@ -22,6 +27,32 @@ public class AppointmentForm {
     
     private void setError(String error) {
         this.error = error;
+    }
+    
+    public boolean updateAppointment (HttpServletRequest request) {
+        String date = request.getParameter(DATE);
+        String office = request.getParameter(OFFICE);
+        String apId = request.getParameter(AP_ID);
+       
+        // Validate date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        dateFormat.setLenient(false);
+        Date dt = new Date();
+        try {     
+            dt = dateFormat.parse(date.trim());
+        } catch (ParseException e) {
+            setError("Invalid date");
+            return false;
+        }
+        if (!office.matches("[a-zA-Z ]+") || office.length() < 1) {
+            setError("Invalid medical office name");
+            return false;
+        }
+        
+        // Update appointment
+        
+        
+        return true;
     }
     
     public boolean scheduleAppointment (HttpServletRequest request) {

@@ -29,11 +29,13 @@
                 </ul>
             </div>
             <div class="dump">
-                <button class="create">+ New Appointment</button>
+                <button id="new-appointment" class="create">
+                    + New Appointment
+                </button>
                 <ul></ul>
             </div>
             <div class="overlay"></div>
-            <div class="popup">
+            <div id="appointment" class="popup">
                 <div class="close">X</div>
                 <div class="form bg-highlight">
                     <input id="amka" name="amka" type="number"
@@ -48,7 +50,19 @@
                     <input id="examination" name="examination" type="text"
                            placeholder="Examination">
                     <div class="error"></div>
-                    <input id="submit" type="button" value="Submit" >
+                    <input class="submit" type="button" value="Submit" >
+                </div>
+            </div>
+            <div id="schedule" class="popup">
+                <div class="close">X</div>
+                <div class="form bg-highlight">
+                    <input id="ap_id"type="text"
+                            placeholder="Appointment ID">
+                    <input id="date" type="text" class="datepicker" 
+                           placeholder="Date">
+                    <input id="office" type="text" placeholder="Medical Office">
+                    <div class="error"></div>
+                    <input class="submit" type="button" value="Submit">
                 </div>
             </div>
         </div>

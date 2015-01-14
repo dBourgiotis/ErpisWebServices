@@ -63,6 +63,7 @@ else if (method == "POST") {
         Manager m = new Manager();
         
         if(m.existAp(ap_id)){
+            m = new Manager();
             m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
         }else{
             out.println("Appointment doesn't exist! Please, try again.");

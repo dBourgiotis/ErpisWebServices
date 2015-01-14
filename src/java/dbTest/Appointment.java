@@ -36,7 +36,7 @@ public class Appointment {
      private Timestamp emergencyDate;
      
      private String MedicalOffice;
-public Appointment () {}
+    public Appointment () {}
     public Appointment(String fullName, String insuranceName, int userId, int amka, String examination) {
         this.fullName = fullName;
         this.insuranceName = insuranceName;
@@ -129,6 +129,14 @@ public Appointment () {}
 
     public Timestamp getDate() {
         return date;
+    }
+    
+    public long getDateTimestamp () {
+        try {
+            return date.getTime();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     public void setDate(Timestamp date) {
