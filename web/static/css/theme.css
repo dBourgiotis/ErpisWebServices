@@ -254,7 +254,7 @@ header {
     display: none;
     padding: 0.5em;
     margin-top: 7px;
-    border-top: 1px solid #373757;
+    border-top: 1px solid #4A4A6A;
 }
 .dump ul span {
     height: 2em;
@@ -267,4 +267,7 @@ header {
 }
 .details table tr {
     border-bottom: 1px solid #8E8E8E;
+}
+.details table td {
+    padding: 4px;
 }

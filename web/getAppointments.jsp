@@ -25,11 +25,10 @@
         rxml+="<amka>"+ls.get(i).getAmka()+"</amka>";
         rxml+="<emergency_reason>"+ls.get(i).getEmergencyReason()+"</emergency_reason>";
         rxml+="<examination>"+ls.get(i).getExamination()+"</examination>";
-        rxml+="<date>"+ls.get(i).getDate()+"</date>";
-        rxml+="<emergency_date>"+ls.get(i).getEmergencyDate()+"</emergency_date>";
+        rxml+="<date>"+ls.get(i).getDate().getTime()+"</date>";
+        rxml+="<emergency_date>"+ls.get(i).getEmergencyDateTimestamp()+"</emergency_date>";
         rxml+="<medical_office>"+ls.get(i).getMedicalOffice()+"</medical_office>";
         rxml+="</appointment>";
- 
     }
     rxml+="</appointments>";
     

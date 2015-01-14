@@ -54,7 +54,14 @@ public Appointment () {}
     }
      
      
-
+    public long getEmergencyDateTimestamp () {
+        try {
+            return emergencyDate.getTime();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
     public Timestamp getEmergencyDate() {
         return emergencyDate;
     }

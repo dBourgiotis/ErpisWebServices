@@ -10,6 +10,7 @@
         <script src="static/js/lib/jquery-ui.min.js"></script>
         <script src="static/js/lib/jquery-ui-timepicker-addon.js"></script>
         <script src="static/js/emergency.js"></script>
+        <script src="static/js/common.js"></script>
         <title>Erpis | Emergency Requests</title>
     </head>
     <body>
@@ -29,19 +30,21 @@
             </div>
             <div class="dump">
                 <button class="create">+ New Emergency Request</button>
+                <ul></ul>
             </div>
             <div class="overlay"></div>
             <div class="popup">
                 <div class="close">X</div>
                 
-                <form class="form bg-highlight" action="emergency_request_form.jsp" method="POST">
+                <div class="form bg-highlight">
                     <input id="ap_id" name="appointment_id" type="text"
                             placeholder="Appointment ID">
                     <input id="date" name="date" type="text" class="datepicker" 
                            placeholder="Date">
                     <input id="reason"  name="reason" type="text" placeholder="Reason">
-                    <input type="submit" value="Submit">
-                </form>
+                    <div class="error"></div>
+                    <input id="submit" type="button" value="Submit">
+                </div>
             </div>
         </div>
     </body>
