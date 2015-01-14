@@ -62,12 +62,12 @@ else if (method == "POST") {
         //insert data into database
         Manager m = new Manager();
         
-        /*if(m.existAp(ap_id)){
+        if(m.existAp(ap_id)){
             m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
         }else{
             out.println("Appointment doesn't exist! Please, try again.");
             out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
-        }*/
+        }
         
        
     }
