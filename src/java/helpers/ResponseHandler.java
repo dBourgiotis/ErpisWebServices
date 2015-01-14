@@ -152,4 +152,13 @@ public class ResponseHandler {
             return false;
         
     }
+    
+    public boolean isSupervisor(){
+        String role= (String) this.request.getSession().getAttribute("role");
+        if(role.equals("Supervisor"))
+            return true;
+        else
+            return false;
+        
+    }
 }
