@@ -27,9 +27,6 @@ $(function () {
             error: function (jqXHR) {
                 showError(jqXHR.responseText);
             },
-            complete: function (jqXHR) {
-                
-            }
         });
     });
     
@@ -38,7 +35,7 @@ $(function () {
         type: 'GET',
         success: function (xml) {
             window.x = xml;
-            var appointments = xml.getElementsByTagName('appointment');
+            var appointments = xml.getElementsByTagName('emergency');
             console.log(appointments);
             for (var i = 0; i < appointments.length; i++) {
                 window.a = appointments[i];

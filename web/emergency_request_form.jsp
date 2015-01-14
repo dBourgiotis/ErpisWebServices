@@ -70,7 +70,7 @@ else if (method == "POST") {
             out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
         }
         
-       
+    
     }
 }
     
