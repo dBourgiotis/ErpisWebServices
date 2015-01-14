@@ -117,9 +117,25 @@ public class Manager {
         
         public void changeAppointment(Appointment ap){
             try {
-                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
+                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set Date = ? , emergencyReason = ? where id = ?;  ");
                 ps.setTimestamp(1, ap.getEmergencyDate());//upopto
-                ps.setString(2, "none");
+                ps.setString(2, null);
+                ps.setInt(3,ap.getId());
+                ps.executeUpdate();
+                System.out.println("appointment changed!");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+        }
+
+        public void declineAppointment(Appointment ap){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set EmergencyDate = ? , emergencyReason = ? where id = ?;  ");
+                ps.setTimestamp(1,null);//upopto
+                ps.setString(2, null);
                 ps.setInt(3,ap.getId());
                 ps.executeUpdate();
                 System.out.println("appointment changed!");
@@ -131,6 +147,7 @@ public class Manager {
             
         }
         
+
         public List<Appointment>loadAppointments(){
             List<Appointment> apList = new ArrayList<Appointment>();
             try {

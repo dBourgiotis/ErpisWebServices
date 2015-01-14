@@ -84,16 +84,32 @@ function createAppointment (a) {
         $('#schedule #ap_id').val(a.id).hide();
     });
     $('#' + a.id + ' .accept').click(function () {
-        return false;
         $.ajax({
-           
+           url: 'emergencyAccept.jsp',
+           type: 'POST',
+           data: {
+               id: a.id,
+               decision: 'accept'
+           },
+           success: function () {
+               refresh();
+           }
         });
+        return false;
     });
     $('#' + a.id + ' .reject').click(function () {
-        return false;
         $.ajax({
-           
+           url: 'emergencyAccept.jsp',
+           type: 'POST',
+           data: {
+               id: a.id,
+               decision: 'reject'
+           },
+           success: function () {
+               refresh();
+           }
         });
+        return false;
     });
 }
 
