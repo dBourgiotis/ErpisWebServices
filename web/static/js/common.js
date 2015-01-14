@@ -60,7 +60,7 @@ function createAppointment (a) {
         'Schedule' +
     '</div>';
     var isScheduled = a['Appointment Date'] != "0";
-    var addSupervisorMenu = (role == 'Supervisor');
+    var addSupervisorMenu = window.isEmergency && (role == 'Supervisor');
     
     $('.dump ul').append(
         '<li id="' + a.id +'" class="bg-highlight"><div class="toggle">' +

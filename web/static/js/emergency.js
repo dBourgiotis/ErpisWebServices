@@ -47,3 +47,4 @@ $(function () {
     });
     $(".datepicker").datetimepicker();;
 });
+window.isEmergency = true;
