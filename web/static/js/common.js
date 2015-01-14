@@ -60,6 +60,7 @@ function createAppointment (a) {
         'Schedule' +
     '</div>';
     var isScheduled = a['Appointment Date'] != "0";
+    var addSupervisorMenu = (role == 'Supervisor');
     
     $('.dump ul').append(
         '<li id="' + a.id +'" class="bg-highlight"><div class="toggle">' +
@@ -67,6 +68,7 @@ function createAppointment (a) {
             '<span class="name">' + a['Full Name'] + '</span>' +
             '<span class="insurance">' + a['Insurance'] + '</span>' +
             (isScheduled ? '' : '<span class="not-scheduled">not schecduled!</span>') +
+            (addSupervisorMenu ? '<span class="supervisor"><button class="accept">Accept</button><button class="reject">Reject</button></span>' :'') +
             '</div>' +
             '<div class="details">' +
                 objectToTable(a) +
@@ -80,6 +82,18 @@ function createAppointment (a) {
     $('#' + a.id + ' .create').click(function () {
         showPopup('#schedule');
         $('#schedule #ap_id').val(a.id).hide();
+    });
+    $('#' + a.id + ' .accept').click(function () {
+        return false;
+        $.ajax({
+           
+        });
+    });
+    $('#' + a.id + ' .reject').click(function () {
+        return false;
+        $.ajax({
+           
+        });
     });
 }
 
@@ -108,3 +122,5 @@ $(function () {
     // Render datepickers
     $(".datepicker").datetimepicker();
 });
+
+window.role = document.cookie.split('=')[1];

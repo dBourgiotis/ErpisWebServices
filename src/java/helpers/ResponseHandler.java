@@ -28,7 +28,6 @@ public class ResponseHandler {
     //
     //
     
-    
     private String _read (String filePath) {
         try {
             File f = new File(
@@ -160,5 +159,9 @@ public class ResponseHandler {
         else
             return false;
         
+    }
+    
+    public String userRole () {
+        return this.request.getSession().getAttribute("role").toString();
     }
 }
