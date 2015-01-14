@@ -147,6 +147,7 @@ public class Manager {
             
         }
         
+       
 
         public List<Appointment>loadAppointments(){
             List<Appointment> apList = new ArrayList<Appointment>();
