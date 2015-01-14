@@ -4,18 +4,31 @@
     Author     : it21221
 --%>
 
+<%@page import="helpers.ResponseHandler"%>
 <%@page import="dbTest.Manager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dbTest.User"%>
 
 <%
-    int id = Integer.parseInt(request.getParameter("Id"));
+    ResponseHandler rHandler = new ResponseHandler(
+        response,
+        request,
+        application
+    );
     
-    String role = request.getParameter("New Role");   
+    if (rHandler.isLoggedIn()){
     
-    
-    Manager myManager = new Manager();
-    
-    myManager.changeUsersRole(id, role);
+        int id = Integer.parseInt(request.getParameter("Id"));
+
+        String role = request.getParameter("New Role");   
+
+
+        Manager myManager = new Manager();
+
+        myManager.changeUsersRole(id, role);
+    }
+
+    else
+        rHandler.redirect("index.jsp");    
 
 %>

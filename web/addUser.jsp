@@ -4,22 +4,34 @@
     Author     : it21221
 --%>
 
+<%@page import="helpers.ResponseHandler"%>
 <%@page import="dbTest.Manager"%>
 <%@page import="dbTest.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String fname = request.getParameter("Username");
-    String password = request.getParameter("Passworld");
-    String role = request.getParameter("Role");
+    ResponseHandler rHandler = new ResponseHandler(
+        response,
+        request,
+        application
+    );
     
-    User myUser= new User();
-    
-    myUser.setPassword(password);
-    myUser.setRole(role);
-    myUser.setUname(fname);
-    
-    Manager myManager = new Manager();
-    
-    myManager.createUser(myUser);
+    if (rHandler.isLoggedIn()){
+            
+        String fname = request.getParameter("Username");
+        String password = request.getParameter("Passworld");
+        String role = request.getParameter("Role");
 
+        User myUser= new User();
+
+        myUser.setPassword(password);
+        myUser.setRole(role);
+        myUser.setUname(fname);
+
+        Manager myManager = new Manager();
+
+        myManager.createUser(myUser);
+    }
+
+    else
+        rHandler.redirect("index.jsp");
 %>
