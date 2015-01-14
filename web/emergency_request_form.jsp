@@ -7,27 +7,30 @@
 <%@page import="java.util.Date"%>
 <%@page import="dbTest.Manager"%>
 <%@page import="dbTest.User"%>
+<%@page import="helpers.ResponseHandler"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%
    
-    
+ResponseHandler rHandler = new ResponseHandler(
+    response,
+    request,
+    application
+);
     
  
 String method = request.getMethod();
     
 // Redirect to appointment page
 if (method == "GET")
-    response.sendRedirect("emergency.html");
+    rHandler.render("emergency.html");
     
 // Schedule appointment
 else if (method == "POST") {
         
-    Auth auth = new Auth();
      
     // Unauthorized
-    if (!auth.isLoggedIn(request)) {
-        response.sendRedirect("login.jsp");
+    if (!rHandler.isLoggedIn()) {
+        rHandler.redirect("login.jsp");
             
     } else {   
         
@@ -41,35 +44,35 @@ else if (method == "POST") {
     
         try{
             ap_id = Integer.parseInt(str_ap_ad);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+            dateFormat.setLenient(false);
+            try {     
+                dt = dateFormat.parse(dt1.trim());
+                //insert data into database
+                 Manager m = new Manager();
+
+                 if(m.existAp(ap_id)){
+                     m = new Manager();
+                     m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
+                     rHandler.success();
+                 }else{
+                     rHandler.error("Appointment does not exist");
+                 }
+
+            } catch (ParseException pe) {
+                rHandler.error("Invalid date");
+            }
         } catch (NumberFormatException e){
-            out.println("Wrong input! Please, try again.");
-            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
+            rHandler.error("Invalid appointment id");
         }
    
         
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        dateFormat.setLenient(false);
-        try {     
-            dt = dateFormat.parse(dt1.trim());
-        } catch (ParseException pe) {
-            out.println("Wrong input! Please, try again.");
-            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
-        }
+ 
     
         
         
         
-        //insert data into database
-        Manager m = new Manager();
-        
-        if(m.existAp(ap_id)){
-            m = new Manager();
-            m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
-        }else{
-            out.println("Appointment doesn't exist! Please, try again.");
-            out.println("<a href='emergency_request_form.html'>Click here to go back</a>");
-        }
-        
+ 
     
     }
 }

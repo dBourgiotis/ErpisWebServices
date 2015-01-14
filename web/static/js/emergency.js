@@ -17,7 +17,7 @@ $(function () {
             url: 'emergency_request_form.jsp',
             type: 'POST',
             data: {
-               appointment_id: $('#ap-id').val(),
+               appointment_id: $('#ap_id').val(),
                date: $('#date').val(),
                reason: $('#reason').val(),
             },

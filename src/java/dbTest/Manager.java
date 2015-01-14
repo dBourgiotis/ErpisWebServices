@@ -117,7 +117,7 @@ public class Manager {
         
         public void changeAppointment(Appointment ap){
             try {
-                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
+                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
                 ps.setTimestamp(1, ap.getEmergencyDate());//upopto
                 ps.setString(2, "none");
                 ps.setInt(3,ap.getId());
@@ -244,7 +244,7 @@ public class Manager {
          public void addEmergency(int id, String reason, Timestamp eDate){
              
              try {
-                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set EmergencyDate = ? , EmergencyReason = ? where id = ?;  ");
+                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set EmergencyDate = ? , EmergencyReason = ? where id = ?;  ");
                 ps.setTimestamp(1, eDate);
                 ps.setString(2, reason);
                 ps.setInt(3,id);
