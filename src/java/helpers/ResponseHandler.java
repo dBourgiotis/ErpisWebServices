@@ -142,5 +142,14 @@ public class ResponseHandler {
         Auth auth = new Auth();
         auth.logOut(this.request);
         return true;
-    }    
+    }  
+    
+    public boolean isAdmin(){
+        String role= (String) this.request.getSession().getAttribute("role");
+        if(role.equals("Admin"))
+            return true;
+        else
+            return false;
+        
+    }
 }
