@@ -59,7 +59,7 @@ function createAppointment (a) {
     var menu = '<div class="create">'+
         'Schedule' +
     '</div>';
-    var isScheduled = a['Appointment Date'];
+    var isScheduled = a['Appointment Date'] != "0";
     
     $('.dump ul').append(
         '<li id="' + a.id +'" class="bg-highlight"><div class="toggle">' +
@@ -90,8 +90,8 @@ function xmlToAppointment (xml) {
     return {
         'Full Name': getEl('fullname')[0].innerHTML,
         'Examination': getEl('examination')[0].innerHTML,
-        'Medical Office': getEl('medical_office')[0].innderHTML,
-        //'Appointment Date': getEl('date')[0].innerHTML,
+        'Medical Office': getEl('medical_office')[0].innerHTML,
+        'Appointment Date': getEl('date')[0].innerHTML,
         'Emergency Reason': getEl('emergency_reason')[0].innerHTML,
         'Insurance': getEl('insurance_name')[0].innerHTML,
         'AMKA': getEl('amka')[0].innderHTML,

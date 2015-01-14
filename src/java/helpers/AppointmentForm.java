@@ -7,6 +7,7 @@ import dbTest.Citizen;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Timestamp;
 
 public class AppointmentForm {
     
@@ -48,10 +49,28 @@ public class AppointmentForm {
             setError("Invalid medical office name");
             return false;
         }
+        if (!apId.matches("[0-9]+") || apId.length() < 1) {
+            setError("Invalid amka");
+            return false;
+        }
+        
+        int ap_id = Integer.parseInt(apId);
         
         // Update appointment
+        Manager m = new Manager();
         
-        
+        if(m.existAp(ap_id)){
+            Appointment appointment = new Appointment();
+            appointment.setDate(new Timestamp(dt.getTime()));
+            appointment.setMedicalOffice(office);
+            appointment.setId(ap_id);
+            m = new Manager();
+            
+            System.out.println(appointment.getDate());//upopto
+                System.out.println(appointment.getMedicalOffice());
+                System.out.println(appointment.getId());
+            m.updateAppointment(appointment);
+        }
         return true;
     }
     

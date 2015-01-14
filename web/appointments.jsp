@@ -20,24 +20,28 @@
             rHandler.render("appointments.html");
             
         } else if (method == "POST") {
-            
-            // Schedule appointment
-            AppointmentForm aForm = new AppointmentForm();
-            request.setAttribute("userid", request.getSession().getAttribute("id"));
-            if (aForm.scheduleAppointment(request)) {
-                rHandler.success();
+            String action = request.getParameter("action");
+            if (action != null && action.indexOf("update") > -1) {
+                System.out.println("i shouldn't be here");
+                // Schedule appointment
+                AppointmentForm aForm = new AppointmentForm();
+                
+                if (aForm.updateAppointment(request)) {
+                    rHandler.success();
+                } else {
+                    rHandler.error(aForm.getError());
+                }
             } else {
-                rHandler.error(aForm.getError());
-            }
-        } else if (method == "PUT") {
-            
-            // Schedule appointment
-            AppointmentForm aForm = new AppointmentForm();
-            request.setAttribute("userid", request.getSession().getAttribute("id"));
-            if (aForm.scheduleAppointment(request)) {
-                rHandler.success();
-            } else {
-                rHandler.error(aForm.getError());
+                System.out.println("yes");
+                
+                // Schedule appointment
+                AppointmentForm aForm = new AppointmentForm();
+                request.setAttribute("userid", request.getSession().getAttribute("id"));
+                if (aForm.scheduleAppointment(request)) {
+                    rHandler.success();
+                } else {
+                    rHandler.error(aForm.getError());
+                }
             }
         }
     }

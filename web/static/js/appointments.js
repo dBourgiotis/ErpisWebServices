@@ -8,7 +8,7 @@ $(function () {
        showPopup('#appointment');
     });
     
-    $('#new-appointment .submit').click(function () {
+    $('#appointment .submit').click(function () {
         $.ajax({
             url: 'appointments.jsp',
             type: 'POST',
@@ -31,8 +31,9 @@ $(function () {
     $('#schedule .submit').click(function () {
         $.ajax({
             url: 'appointments.jsp',
-            type: 'PUT',
+            type: 'POST',
             data: {
+               action: 'update',
                ap_id: $('#ap_id').val(),
                date: $('#date').val(),
                office: $('#office').val(),

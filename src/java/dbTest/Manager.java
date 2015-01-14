@@ -97,13 +97,11 @@ public class Manager {
                 System.out.println("Error in check() -->" + ex.getMessage());
 
             }
-                       
-         
         }
         
         public void updateAppointment(Appointment ap){
             try {
-                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , MedicalOffice = ? where id = ?;  ");
+                PreparedStatement ps = connection.prepareStatement("Update AppointmentForm set Date = ? , MedicalOffice = ? where id = ?;  ");
                 ps.setTimestamp(1, ap.getDate());//upopto
                 ps.setString(2, ap.getMedicalOffice());
                 ps.setInt(3,ap.getId());
