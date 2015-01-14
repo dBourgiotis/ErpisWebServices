@@ -1,16 +1,10 @@
 $(function () {
    
-    $('.form input').on('keypress', function () {
-        hideError();
-    });
     
     $('.create').click(function () {
        showPopup();
     });
     
-    $('.overlay, .popup .close').click(function () {
-        hidePopup();
-    });
     
     $('#submit').click(function () {
         $.ajax({
@@ -35,7 +29,7 @@ $(function () {
     });
     
     $.ajax({
-        url: 'admin.jsp',
+        url: 'getUserList.jsp',
         type: 'GET',
         success: function (xml) {
             window.x = xml;
@@ -43,8 +37,8 @@ $(function () {
             console.log(users);
             for (var i = 0; i < users.length; i++) {
                 window.a = users[i];
-                createAppointment(
-                    xmlToAppointment(users[i])
+                createUser(
+                    xmlToUser(users[i])
                 );
             }
         }
@@ -54,26 +48,26 @@ $(function () {
 function createUser (u) {
     
     $('.dump ul').append(
-        '<li id="' + u.id +'" class="bg-highlight">' +
+        '<li id="' + u.id +'" class="bg-highlight"><div class="toggle">' +
             '<span class="id">' + u['id'] + '</span>' +
             '<span class="name">' + u['Full Name'] + '</span>' +
-            '<span class="role">' + u['Role'] + '</span>' +
+            '<span class="role">' + u['Role'] + '</span></div>' +
             '<div class="details">' +
                 objectToTable(u) +
             '</div>' +
         '</li>'
     );
-    $('#' + u.id).click(function () {
+    $('#' + u.id + ' .toggle').click(function () {
         $('#' + u.id + ' .details').toggle(200);
     });
 }
 
-function xmlToAppointment (xml) {
+function xmlToUser (xml) {
     var getEl = function (tagname) {
         return xml.getElementsByTagName(tagname);
     }
     return {
-        'Full Name': getEl('fullname')[0].innerHTML,
+        'Full Name': getEl('uname')[0].innerHTML,
         'Role': getEl('role')[0].innerHTML,
         'id': getEl('id')[0].innerHTML
     }

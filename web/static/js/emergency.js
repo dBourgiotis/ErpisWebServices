@@ -22,7 +22,7 @@ $(function () {
                reason: $('#reason').val(),
             },
             success: function () {
-                hidePopup();
+                refresh();
             },
             error: function (jqXHR) {
                 showError(jqXHR.responseText);

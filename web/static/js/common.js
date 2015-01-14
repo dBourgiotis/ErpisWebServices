@@ -123,6 +123,7 @@ function xmlToAppointment (xml) {
         'Medical Office': getEl('medical_office')[0].innerHTML,
         'Appointment Date': getEl('date')[0].innerHTML,
         'Emergency Reason': getEl('emergency_reason')[0].innerHTML,
+        'Emergency Date': getEl('emergency_date')[0].innerHTML,
         'Insurance': getEl('insurance_name')[0].innerHTML,
         'AMKA': getEl('amka')[0].innderHTML,
         'id': getEl('id')[0].innerHTML,
