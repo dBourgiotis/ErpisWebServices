@@ -390,4 +390,28 @@ public class Manager {
             }
             return id;
         }
+        
+        public List<User> loadUsers(){
+            List <User> ulist = new ArrayList <User>();
+            
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery("select * from User");
+                while(rs.next()){
+                    User mu = new User();
+                    mu.setId(rs.getInt("Id"));
+                    mu.setPassword(rs.getString("Password"));
+                    mu.setRole(rs.getString("Role"));
+                    mu.setUname(rs.getString("FullName"));
+                    ulist.add(mu);
+                }
+                connection.close();
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+            
+            
+            return ulist;
+        }
+        
 }
