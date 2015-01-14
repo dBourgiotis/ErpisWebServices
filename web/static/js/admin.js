@@ -11,20 +11,16 @@ $(function () {
             url: 'admin.jsp',
             type: 'POST',
             data: {
-               first_name: $('#first-name').val(),
-               last_name: $('#last-name').val(),
+               username: $('#first-name').val() + ' ' + $('#last-name').val(),
                password: $('#password').val(),
                role: $('#role').val()
             },
             success: function () {
-                hidePopup();
+                refresh();
             },
             error: function (jqXHR) {
                 showError(jqXHR.responseText);
             },
-            complete: function (jqXHR) {
-                
-            }
         });
     });
     

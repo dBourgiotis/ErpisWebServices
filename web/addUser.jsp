@@ -17,9 +17,9 @@
     
     if (rHandler.isLoggedIn()){
             
-        String fname = request.getParameter("Username");
-        String password = request.getParameter("Passworld");
-        String role = request.getParameter("Role");
+        String fname = request.getParameter("username");
+        String password = request.getParameter("passworld");
+        String role = request.getParameter("role");
 
         User myUser= new User();
 
@@ -30,6 +30,8 @@
         Manager myManager = new Manager();
 
         myManager.createUser(myUser);
+        
+        rHandler.success();
     }
 
     else
