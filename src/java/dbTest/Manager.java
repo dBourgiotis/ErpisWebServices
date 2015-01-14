@@ -101,6 +101,22 @@ public class Manager {
          
         }
         
+        public void updateAppointment(Appointment ap){
+            try {
+                PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , MedicalOffice = ? where id = ?;  ");
+                ps.setTimestamp(1, ap.getDate());//upopto
+                ps.setString(2, ap.getMedicalOffice());
+                ps.setInt(3,ap.getId());
+                ps.executeUpdate();
+                System.out.println("appointment updated!");
+                connection.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
+        
+        
         public void changeAppointment(Appointment ap){
             try {
                 PreparedStatement ps = connection.prepareStatement("Update appointmentForm set Date = ? , energencyReason = ? where id = ?;  ");
