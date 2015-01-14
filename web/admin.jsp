@@ -22,7 +22,7 @@
         if (method == "GET") {
             
             // Render Users
-            rHandler.redirect("getUserList.jsp");
+            rHandler.render("admin.html");
             
         } else if (method == "POST") {
             
