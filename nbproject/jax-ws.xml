@@ -13,6 +13,12 @@
     <service name="User">
       <implementation-class>dbTest.User</implementation-class>
     </service>
+    <service name="InformationMeeting">
+      <implementation-class>dbTest.InformationMeeting</implementation-class>
+    </service>
+    <service name="Database">
+      <implementation-class>dbTest.Database</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
