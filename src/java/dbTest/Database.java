@@ -12,7 +12,9 @@ package dbTest;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
+import javax.jws.WebService;
 
+@WebService
 public class Database {
 
 
