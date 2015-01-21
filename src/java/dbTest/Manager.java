@@ -461,4 +461,38 @@ public class Manager {
             }
         }
         
+        public List<InformationMeeting> loadMeetings(){
+            List <InformationMeeting> list = new ArrayList <InformationMeeting> ();
+            
+            try {
+
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select * from InformationMeetings");
+
+                while (rs.next()) {
+
+                    InformationMeeting m = new InformationMeeting();
+
+                    m.setId(rs.getInt("id"));
+                    m.setPlace(rs.getString("place")); 
+                    m.setName(rs.getString("name"));                    
+                    m.setDate(rs.getTimestamp("date"));
+                    m.setDescription(rs.getString("description"));
+                    
+                    list.add(m);
+
+                }
+                System.out.println("list created");
+                connection.close();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+            
+            return list;
+        }
+        
 }
