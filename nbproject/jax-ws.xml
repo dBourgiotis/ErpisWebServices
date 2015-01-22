@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="Appointment">
-      <implementation-class>dbTest.Appointment</implementation-class>
-    </service>
-    <service name="Citizen">
-      <implementation-class>dbTest.Citizen</implementation-class>
-    </service>
-    <service name="Manager">
-      <implementation-class>dbTest.Manager</implementation-class>
-    </service>
-    <service name="User">
-      <implementation-class>dbTest.User</implementation-class>
-    </service>
-    <service name="InformationMeeting">
-      <implementation-class>dbTest.InformationMeeting</implementation-class>
-    </service>
-    <service name="Database">
-      <implementation-class>dbTest.Database</implementation-class>
+    <service name="WsMan">
+      <implementation-class>dbTest.WsMan</implementation-class>
     </service>
   </services>
   <clients/>

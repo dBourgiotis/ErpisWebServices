@@ -19,51 +19,11 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </taskdef>
     </target>
-    <target name="wsgen-Appointment" depends="wsgen-init">
+    <target name="wsgen-WsMan" depends="wsgen-init">
         <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.Appointment.xml"/>
+            <fileset dir="${webinf.dir}" includes="wsit-dbTest.WsMan.xml"/>
         </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.Appointment" xendorsed="true">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
-    <target name="wsgen-Citizen" depends="wsgen-init">
-        <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.Citizen.xml"/>
-        </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.Citizen" xendorsed="true">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
-    <target name="wsgen-Manager" depends="wsgen-init">
-        <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.Manager.xml"/>
-        </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.Manager" xendorsed="true">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
-    <target name="wsgen-User" depends="wsgen-init">
-        <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.User.xml"/>
-        </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.User" xendorsed="true">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
-    <target name="wsgen-InformationMeeting" depends="wsgen-init">
-        <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.InformationMeeting.xml"/>
-        </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.InformationMeeting" xendorsed="true">
-            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
-        </wsgen>
-    </target>
-    <target name="wsgen-Database" depends="wsgen-init">
-        <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-dbTest.Database.xml"/>
-        </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.Database" xendorsed="true">
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="dbTest.WsMan" xendorsed="true">
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>

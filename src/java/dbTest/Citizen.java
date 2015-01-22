@@ -7,7 +7,7 @@ package dbTest;
 
 import javax.jws.WebService;
 
-@WebService
+
 public class Citizen {
     
         private String fullName;

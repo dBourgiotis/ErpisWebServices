@@ -19,7 +19,7 @@ import javax.jws.WebService;
 
 import javax.validation.constraints.*;
 
-@WebService
+
 public class User {
     
     @NotNull

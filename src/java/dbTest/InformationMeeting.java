@@ -13,7 +13,7 @@ import javax.jws.WebService;
  *
  * @author it21221
  */
-@WebService
+
 public class InformationMeeting {
     
     private int id;

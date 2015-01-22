@@ -15,14 +15,13 @@ import java.sql.DriverManager;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-@WebService
 public class Database {
 
 
 
 
    
-     @WebMethod   
+  
      public static Connection getConnection() {
 
           try  {
@@ -46,7 +45,7 @@ public class Database {
       }
 
  
-       @WebMethod  
+  
        public static void close(Connection con) {
 
           try  {
