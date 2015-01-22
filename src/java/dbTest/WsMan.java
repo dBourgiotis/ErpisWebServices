@@ -5,6 +5,7 @@
  */
 package dbTest;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.jws.WebService;
@@ -129,4 +130,24 @@ public class WsMan {
         list=m.loadMeetings();
         return list;
     }
+    
+    public boolean addEm(int ap_id, String rsn,Timestamp dt){
+        Manager m = new Manager();
+
+                 if(m.existAp(ap_id)){
+                     m = new Manager();
+                     m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
+                     return true;
+                 }else{
+                     return false;
+                 }
+        
+    }
+    
+    public List<Appointment> loadApps(int amka){
+        Manager m = new Manager();
+        List <Appointment> list = m.loadUserApps(amka);
+        return list;
+    }
+    
 }

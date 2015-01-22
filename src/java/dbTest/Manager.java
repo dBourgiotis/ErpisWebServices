@@ -495,4 +495,43 @@ public class Manager {
             return list;
         }
         
+        public List<Appointment> loadUserApps(int amka){
+            List<Appointment> apList = new ArrayList<Appointment>();
+             try {
+
+                PreparedStatement ps = connection.prepareStatement("select * from AppointmentForm where amka = ? ");
+                                
+                ps.setInt(1,amka);
+                ResultSet rs = ps.executeQuery();
+                
+                
+                while (rs.next()) {
+
+                    Appointment ap = new Appointment();
+
+                    ap.setId(rs.getInt("id"));
+                    ap.setAmka(rs.getInt("amka")); 
+                    ap.setFullName(rs.getString("FullName"));
+                    ap.setEmergencyReason(rs.getString("EmergencyReason"));
+                    ap.setDate(rs.getTimestamp("Date"));
+                    ap.setInsuranceName(rs.getString("InsuranceName"));
+                    ap.setExamination(rs.getString("Examination"));
+                    ap.setUserId(rs.getInt("user_id"));
+                    ap.setEmergencyDate(rs.getTimestamp("EmergencyDate"));
+                    ap.setMedicalOffice(rs.getString("MedicalOffice"));
+                    
+                    apList.add(ap);
+
+                }
+                System.out.println("Aplist created");
+                connection.close();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+            return apList;
+        }
+        
 }
