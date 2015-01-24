@@ -124,11 +124,23 @@ public class WsMan {
         return true;
     }
     
-    public List<InformationMeeting> loadMeet(){
-        List <InformationMeeting> list = new ArrayList<InformationMeeting>();
+    public String loadMeet(){
+        List <InformationMeeting> ls = new ArrayList<InformationMeeting>();
         Manager m = new Manager();
-        list=m.loadMeetings();
-        return list;
+        ls=m.loadMeetings();
+        String rxml= new String();
+        rxml+="<informationmeetings>";
+        for (int i = 0; i < ls.size(); ++i){
+            rxml+="<informationmeeting>";
+            rxml+="<name>"+ls.get(i).getName()+"</name>";            
+            rxml+="<id>"+ls.get(i).getId()+"</id>";
+            rxml+="<place>"+ls.get(i).getPlace()+"</place>";
+            rxml+="<date>"+ls.get(i).getDate() + "</date>";
+            rxml+="<description>"+ls.get(i).getDescription()+"</description>";
+            rxml+="</informationmeeting>";
+        }
+        rxml+="</informationmeetings>";
+        return rxml;
     }
     
     public boolean addEm(int ap_id, String rsn,Timestamp dt){
@@ -144,10 +156,27 @@ public class WsMan {
         
     }
     
-    public List<Appointment> loadApps(int amka){
+    public String loadApps(int amka){
         Manager m = new Manager();
-        List <Appointment> list = m.loadUserApps(amka);
-        return list;
+        List <Appointment> ls = m.loadUserApps(amka);
+        String rxml= new String();
+        rxml+="<appointments>";
+        for (int i = 0; i < ls.size(); ++i){
+            rxml+="<appointment>";
+            rxml+="<fullname>"+ls.get(i).getFullName()+"</fullname>";
+            rxml+="<insurance_name>"+ls.get(i).getInsuranceName()+"</insurance_name>";
+            rxml+="<id>"+ls.get(i).getId()+"</id>";
+            rxml+="<userid>"+ls.get(i).getUserId()+"</userid>";
+            rxml+="<amka>"+ls.get(i).getAmka()+"</amka>";
+            rxml+="<emergency_reason>"+ls.get(i).getEmergencyReason()+"</emergency_reason>";
+            rxml+="<examination>"+ls.get(i).getExamination()+"</examination>";
+            rxml+="<date>"+ls.get(i).getDateTimestamp() + "</date>";
+            rxml+="<emergency_date>"+ls.get(i).getEmergencyDateTimestamp()+"</emergency_date>";
+            rxml+="<medical_office>"+ls.get(i).getMedicalOffice()+"</medical_office>";
+            rxml+="</appointment>";
+        }
+        rxml+="</appointments>";
+        return rxml;
     }
     
 }
