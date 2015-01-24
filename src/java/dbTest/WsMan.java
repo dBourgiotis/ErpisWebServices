@@ -178,5 +178,10 @@ public class WsMan {
         rxml+="</appointments>";
         return rxml;
     }
-    
+ 
+    public int getAmka(String name){
+        Manager m = new Manager();
+        int x=m.returnAmka(name);
+        return x;
+    }
 }

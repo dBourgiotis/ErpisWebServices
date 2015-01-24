@@ -533,5 +533,21 @@ public class Manager {
             }
             return apList;
         }
-        
+    
+    public int returnAmka(String name){
+        int amka = -1;
+        PreparedStatement ps;
+        try {
+            ps = connection.prepareStatement("select amka from Citizen where FullName = ? ");
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+                amka= rs.getInt("amka");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }                               
+                
+        return amka;
+    }    
 }
