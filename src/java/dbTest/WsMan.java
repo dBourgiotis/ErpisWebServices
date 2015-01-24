@@ -143,12 +143,12 @@ public class WsMan {
         return rxml;
     }
     
-    public boolean addEm(int ap_id, String rsn,Timestamp dt){
+    public boolean addEm(int ap_id, String rsn, long dt){
         Manager m = new Manager();
 
                  if(m.existAp(ap_id)){
                      m = new Manager();
-                     m.addEmergency(ap_id, rsn, new Timestamp(dt.getTime()));
+                     m.addEmergency(ap_id, rsn, new Timestamp(dt));
                      return true;
                  }else{
                      return false;
