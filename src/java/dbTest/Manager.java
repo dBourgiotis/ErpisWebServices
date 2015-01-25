@@ -446,4 +446,20 @@ public class Manager {
             return ulist;
         }
         
+        public void createInfoMeet(InformationMeeting im){
+        
+            try {
+                PreparedStatement ps = connection.prepareStatement("Insert into InformationMeeting (date,place,name,description) Values (?,?,?,?)");
+                ps.setTimestamp(1,im.getDate());
+                ps.setString(2, im.getPlace());
+                ps.setString(3,im.getName());
+                ps.setString(4,im.getDescription());
+                ps.executeUpdate();
+                connection.close();
+                System.out.println("Information Meeting Created");
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        }
+       
 }
