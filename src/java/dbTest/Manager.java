@@ -461,6 +461,34 @@ public class Manager {
             }
         }
         
+        
+        public List<String> loadSubscriberMails(){
+            List <String> list = new ArrayList <String> ();
+            
+            try {
+
+                Statement statement = connection.createStatement();
+
+                ResultSet rs = statement.executeQuery("select * from SubscriptionList");
+
+                while (rs.next()) {
+
+                    list.add(rs.getString("email"));
+
+                }
+                System.out.println("list created");
+                connection.close();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+
+            }
+            
+            return list;
+        }
+        
+        
         public List<InformationMeeting> loadMeetings(){
             List <InformationMeeting> list = new ArrayList <InformationMeeting> ();
             
@@ -549,5 +577,22 @@ public class Manager {
         }                               
                 
         return amka;
-    }    
+    }   
+    
+    public void createInfoMeet(InformationMeeting im){
+        
+            try {
+                PreparedStatement ps = connection.prepareStatement("Insert into InformationMeeting (id,date,place,name,description) Values (?,?,?,?,?)");
+                ps.setString(1,im);
+                ps.setString(2, im);
+                ps.setString(3,im);
+                ps.setString(4,im);
+                ps.setString(5,im);
+                ps.executeUpdate();
+                connection.close();
+                System.out.println("Information Meeting Created");
+            } catch (SQLException ex) {
+                System.out.println("Error in check() -->" + ex.getMessage());
+            }
+        } 
 }

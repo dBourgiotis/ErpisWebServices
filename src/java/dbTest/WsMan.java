@@ -184,4 +184,11 @@ public class WsMan {
         int x=m.returnAmka(name);
         return x;
     }
+    
+    public void sendNewsletter(){
+        Manager m = new Manager();
+        List <String> list = m.loadSubscriberMails();
+        
+         
+    }
 }
