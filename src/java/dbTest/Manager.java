@@ -5,6 +5,9 @@
  */
 package dbTest;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -462,30 +465,43 @@ public class Manager {
         }
         
         
-        public List<String> loadSubscriberMails(){
-            List <String> list = new ArrayList <String> ();
-            
+        public String loadSubscriberMails(){
+           // List <String> list = new ArrayList <String> ();
+            String addressFile = "SubscriberMails.txt";
+            PrintWriter writer;
             try {
+                writer = new PrintWriter("SubscriberMails.txt", "UTF-8");
+            
+            
+                try {
 
-                Statement statement = connection.createStatement();
+                    Statement statement = connection.createStatement();
 
-                ResultSet rs = statement.executeQuery("select * from SubscriptionList");
+                    ResultSet rs = statement.executeQuery("select * from SubscriptionList");
 
-                while (rs.next()) {
+                    while (rs.next()) {
 
-                    list.add(rs.getString("email"));
+                       // list.add(rs.getString("email"));                    
+                        writer.println(rs.getString("email"));
+
+
+                    }
+                    System.out.println("list created");
+                    writer.close();
+                    connection.close();
+
+                } catch (SQLException e) {
+
+                    e.printStackTrace();
 
                 }
-                System.out.println("list created");
-                connection.close();
-
-            } catch (SQLException e) {
-
-                e.printStackTrace();
-
-            }
             
-            return list;
+            } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return addressFile;
         }
         
         
@@ -578,7 +594,7 @@ public class Manager {
                 
         return amka;
     }   
-    
+    /*GREG
     public void createInfoMeet(InformationMeeting im){
         
             try {
@@ -594,5 +610,5 @@ public class Manager {
             } catch (SQLException ex) {
                 System.out.println("Error in check() -->" + ex.getMessage());
             }
-        } 
+        } */
 }

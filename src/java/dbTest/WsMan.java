@@ -5,10 +5,20 @@
  */
 package dbTest;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
+import javax.mail.MessagingException;
+import newsletterHelpers.FileCollection;
+import newsletterHelpers.MessageProvider;
+import newsletterHelpers.NewsletterSender;
 
 /**
  *
@@ -185,10 +195,56 @@ public class WsMan {
         return x;
     }
     
-    public void sendNewsletter(){
+   
+    
+    
+    
+    public void sendNewsletter(String addressFile){
+        String  messageFile = "newsletter.txt";
         Manager m = new Manager();
-        List <String> list = m.loadSubscriberMails();
+       // List <String> list = m.loadSubscriberMails();
+        addressFile = m.loadSubscriberMails();        
+        PrintWriter writer;
         
+        
+        try {
+            writer = new PrintWriter("newsletter.txt", "UTF-8");
+            writer.println("A new information meeting is going to take place in our clinic.");
+            writer.println("Please, visit our site to learn more about it.");
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(WsMan.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(WsMan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        try {
+            FileCollection to = new FileCollection(addressFile);
+        
+        
+        
+            try {
+                
+                MessageProvider provider = new MessageProvider(messageFile);
+                try {
+                    NewsletterSender nls = new NewsletterSender(provider);
+                    for (String email : to) {
+                        nls.sendMessageTo(email);
+                        //System.out.println("Mail sent to " + email);
+                    }
+                } catch (MessagingException ex) {
+                    Logger.getLogger(WsMan.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(WsMan.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(WsMan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
          
     }
 }
