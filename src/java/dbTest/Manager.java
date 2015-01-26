@@ -468,7 +468,7 @@ public class Manager {
 
                 Statement statement = connection.createStatement();
 
-                ResultSet rs = statement.executeQuery("select * from InformationMeetings");
+                ResultSet rs = statement.executeQuery("select * from InformationMeeting");
 
                 while (rs.next()) {
 
