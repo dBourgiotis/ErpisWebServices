@@ -16,7 +16,7 @@ import java.util.*;
 
 
 
-public class NewletterSender {
+public class NewsletterSender {
 
   private static final String SMTP_SERVER =
       "smtp.javaspecialists.eu";
@@ -31,7 +31,7 @@ public class NewletterSender {
   private final Session session;
   private final MessageProvider provider;
 
-  public NewletterSender(MessageProvider provider)
+  public NewsletterSender(MessageProvider provider)
       throws MessagingException {
     this.provider = provider;
     Properties props = System.getProperties();
