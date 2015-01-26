@@ -468,6 +468,10 @@ public class Manager {
             } catch (SQLException ex) {
                 System.out.println("Error in check() -->" + ex.getMessage());
             }
+            
+            //send mail to subscribers in order to inform them for the new information meeting
+            String subsfile = this.loadSubscriberMails();
+            this.sendNewsletter(subsfile);
         }
         
         
